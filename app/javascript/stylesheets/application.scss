@@ -1,0 +1,78 @@
+@import '~bootstrap/scss/bootstrap';
+
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box
+}
+
+// タブバーの高さ分パディングを入れる
+body {
+  padding-bottom: 100px;
+}
+
+// devise
+
+.signup-outer {
+  height: 600px;
+  position: relative;
+}
+
+.signup-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform : translate(-50%,-50%);
+  transform : translate(-50%,-50%);
+}
+
+.signup-form {
+  padding: 20px;
+  border: solid 1px lightgray;
+  border-radius: 5px;
+}
+
+.devise-title {
+  font-size: 28px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.sign-up-btn {
+  padding: 8px 20px;
+  border-radius: 5px;
+  background-color: #DC564F;
+  color: white;
+}
+
+/* tabbar */
+
+.fixed-bottom {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+}
+
+.tabbar-frame {
+  padding: 14px 0 24px 0;
+  background-color: #f1f1f1;
+}
+
+.nav-item {
+  position:absolute;
+}
+
+.nav-item__icon {
+  font-size: 30px;
+  color: rgba(0, 0, 0, 0.24);
+}
+
+/* .nav-item__text {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  font-size: 12px;
+} */
+

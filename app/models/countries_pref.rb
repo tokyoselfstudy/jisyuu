@@ -1,0 +1,2 @@
+class CountriesPref < ApplicationRecord
+end

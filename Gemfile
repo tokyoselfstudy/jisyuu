@@ -23,11 +23,9 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 
-gem 'jquery-rails'
-gem 'bootstrap-sass' #bootstrap導入
-gem 'font-awesome-sass' #font-awesome導入
 gem 'devise' #ユーザー機能導入
 gem 'devise-i18n' #devise日本語化
+gem 'devise-i18n-views'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -47,6 +45,8 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'letter_opener_web'
+  gem 'pry-byebug'
 end
 
 group :test do

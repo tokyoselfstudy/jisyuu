@@ -1,0 +1,2 @@
+class UsersJobCategory < ApplicationRecord
+end

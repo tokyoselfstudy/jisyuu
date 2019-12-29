@@ -74,6 +74,11 @@
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
 
+      <div class="field mb-4">
+        <%= f.label 'プロフィール写真' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span><br />
+        <%= f.file_field :avatar, class: 'p-3', style: 'border: solid 1px lightgray;width:100%;border-radius:5px;' %>
+      </div>
+
       <div class=" mb-4 form-group">
         <%= f.label '居住地' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span><br />
         <%= f.collection_select(:pref_id, CountriesPref.all, :id, :name, {}, class: 'form-control', selected: current_user.pref_id.present? ? current_user.pref_id : 13) %>

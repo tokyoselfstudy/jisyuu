@@ -1,0 +1,12 @@
+<div class="main mt-5">
+  <div class="container col-lg-5 col-md-5">
+    <div class="profile-block border-bottom pb-3">
+      <h1><%=  %></h1>
+      <%= image_tag(@user.avatar.variant(resize: "100x100"), class: 'rounded') if @user.avatar.attached? %>
+      <p class="mt-4 mb-0 font-weight-bold">氏名: <%= @user.view_full_name %></p>
+      <p class="font-weight-bold" style="color:gray;">学習している事: <%= @user.studying %></p>
+      <p style="word-wrap: break-word;"><%= @user.introduction.present? ? @user.introduction : 'プロフィール文未設定' %></p>
+      <a class="sign-up-btn text-center" style="width: 100%;display: block" href="/users/edit">プロフィールを編集する</a>
+    </div>
+  </div>
+</div>

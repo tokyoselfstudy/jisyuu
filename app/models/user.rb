@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
+  has_many :event
+
   def view_full_name
     return "#{self.family_name} #{self.first_name}"
   end

@@ -1,2 +1,39 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<section class="container col-md-8 col-lg-6">
+  <h1 style="font-size:20px;font-weight: bold;" class="m-0 pb-1 pt-3">
+    <%= @event.title %>
+  </h1>
+</section>
+
+<section class="container col-md-8 col-lg-6 p-0">
+  <figure class="m-0">
+    <%= image_tag(@event.image.variant(resize: "1000x300"), class: 'w-100 event-img', alt: @event.title.presence || 'イベントの画像') %>
+  </figure>
+  <div class="d-flex mt-2 ml-3">
+    <%= image_tag(@event.user.avatar.variant(resize: "100x100"), class: 'rounded-circle user-circle-image') if @event.user.avatar.attached? %>
+    <div class="ml-3">
+      <p class="mb-0">ファシリテーター</p>
+      <p class="font-weight-bold"><%= @event.user.view_full_name %></p>
+    </div>
+  </div>
+</section>
+
+<section class="event-content-block">
+  <div class="container col-md-8 col-lg-6">
+    <h2 class="h2-event mt-4"><i style="color: #DC564F;" class="fas fa-clock fa-fw fa-lg "></i>開催日時</h2>
+    <p style="margin-left: 30px;"><%= @event.event_date_shape %>~<%= @event.event_end_date_shape %></p>
+    <div class="d-flex mt-4">
+      <h2 class="h2-event"><i style="color: #DC564F;" class="fas fa-map-marker-alt fa-lg fa-fw"></i>場所:</h2>
+      <p class="ml-3 mb-0"><%= @event.place_name.presence || '' %></p>
+    </div>
+    <p style="margin-left: 30px;"><%= @event.place_address.presence || '' %></p>
+  </div>
+</section>
+
+<section class="event-content-block">
+  <div class="container col-md-8 col-lg-6">
+    <h2 class="h2-event mt-4"><i style="color: #DC564F;" class="fas fa-users fa-fw fa-lg "></i>&nbsp;参加人数</h2>
+    
+
+  </div>
+</section>
+

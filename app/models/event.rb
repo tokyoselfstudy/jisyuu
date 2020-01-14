@@ -10,7 +10,6 @@ class Event < ApplicationRecord
   validate :image_presence
   belongs_to :user
 
-
   def image_presence
     if image.attached?
       if !image.content_type.in?(%('image/jpeg image/png'))
@@ -21,5 +20,17 @@ class Event < ApplicationRecord
     else
       errors.add(:image, 'ファイルを添付してください')
     end
+  end
+
+  def event_date_shape
+    event_date.strftime("%-m月%-d日(#{%w(日 月 火 水 木 金 土)[event_date.wday]}) %-H時%-M分")
+  end
+
+  def event_end_date_shape
+    event_end_date.strftime("%-H時%-M分")
+  end
+
+  def price_label
+    self.fee == 0 ? '無料' : self.fee 
   end
 end

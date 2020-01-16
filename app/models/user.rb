@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validate :avatar_presence
 
   has_many :event
+  has_many :events_users
 
   def avatar_presence
     if avatar.attached?

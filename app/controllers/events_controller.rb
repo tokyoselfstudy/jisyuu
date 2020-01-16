@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!
   before_action :create_event_date_params, only: [:create, :update]
   before_action :create_event_end_date_params, only: [:create, :update]
 
@@ -9,6 +8,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @events_user = EventsUser.where(event_id: @event.id, user_id: current_user.id).first if user_signed_in?
   end
 
   def create

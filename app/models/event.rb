@@ -8,6 +8,9 @@ class Event < ApplicationRecord
 
   has_one_attached :image
   validate :image_presence
+
+  has_many :events_users
+  has_many :participants_user, through: :events_users
   belongs_to :user
 
   def image_presence
@@ -20,6 +23,10 @@ class Event < ApplicationRecord
     else
       errors.add(:image, 'ファイルを添付してください')
     end
+  end
+
+  def participate_count
+    EventsUser.where(event_id: self.id).count
   end
 
   def event_date_shape

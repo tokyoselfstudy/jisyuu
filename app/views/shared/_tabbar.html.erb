@@ -1,4 +1,4 @@
-<% if controller.controller_name == 'events' && controller.action_name == 'show' %>
+<% if controller.controller_name == 'events' && controller.action_name == 'show' && user_signed_in? %>
   <nav class="fixed-bottom event-apply-tabbar">
     <div class="container col-lg-6 col-md-6 d-flex justify-content-around align-items-center">
       <div>
@@ -6,7 +6,11 @@
         <p class="m-0 font-weight-bold" style="font-size: 20px;">¥&nbsp;<%= @event.price_label %></p>
       </div>
       <div class="">
-        <a class="event-apply-btn" href="/popups/5de33888528beb4606a44826/bookings/new">予約する</a>
+      <% if @events_user.present? %>
+        <%= link_to 'キャンセルする', events_user_path(@events_user.id),  class: 'event-apply-btn', method: :delete %>
+      <% else %>
+        <%= link_to '予約する', events_users_path(event_id: @event.id),  class: 'event-apply-btn', method: :post %>
+      <% end %>
       </div>
     </div>
   </nav>

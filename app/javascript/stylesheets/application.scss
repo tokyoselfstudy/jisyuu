@@ -138,6 +138,11 @@ body {
   background-color: #DC564F;
   color: white;
   text-decoration: none;
+  &:hover {
+    text-decoration: none;
+    color: white;
+    opacity: 0.8;
+  }
 }
 
 .event-apply-tabbar {

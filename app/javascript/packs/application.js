@@ -8,7 +8,6 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("jquery")
-require('popper.js');
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -20,12 +19,14 @@ require('popper.js');
 
 import 'bootstrap';
 import '../stylesheets/application';
-import '@fortawesome/fontawesome-free/js/all'
+import '@fortawesome/fontawesome-free/js/all';
+
 
 // flashをmodal化して制御するコード（動かないので保留）
 // $(window).on('load', function(){
 //   $('#exampleModal').modal('show');
 // });
+
 
 $(function() {
   $("#hoge").css("color","green")

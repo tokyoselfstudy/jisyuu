@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   }
 
   root 'top#index'
+  get 'menu', to: 'top#menu'
   resources :users, only: [:show]
   resources :events
   resources :events_users, only: [:create, :destroy]  

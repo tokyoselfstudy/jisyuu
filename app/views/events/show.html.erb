@@ -19,10 +19,10 @@
 
 <section class="event-content-block">
   <div class="container col-md-8 col-lg-6">
-    <h2 class="h2-event mt-4"><i style="color: #DC564F;" class="fas fa-clock fa-fw fa-lg "></i>開催日時</h2>
+    <h2 class="h2-event mt-4"><i class="fas fa-clock fa-fw fa-lg icon-color"></i>開催日時</h2>
     <p style="margin-left: 30px;"><%= @event.event_date_shape %>~<%= @event.event_end_date_shape %></p>
     <div class="d-flex mt-4">
-      <h2 class="h2-event"><i style="color: #DC564F;" class="fas fa-map-marker-alt fa-lg fa-fw"></i>場所:</h2>
+      <h2 class="h2-event"><i class="fas fa-map-marker-alt fa-lg fa-fw icon-color"></i>場所:</h2>
       <p class="ml-3 mb-0"><%= @event.place_name.presence || '' %></p>
     </div>
     <p style="margin-left: 30px;"><%= @event.place_address.presence || '' %></p>
@@ -31,7 +31,7 @@
 
 <section class="event-content-block">
   <div class="container col-md-8 col-lg-6">
-    <h2 class="h2-event mt-4"><i style="color: #DC564F;" class="fas fa-users fa-fw fa-lg "></i>&nbsp;参加人数</h2>
+    <h2 class="h2-event mt-4"><i class="fas fa-users fa-fw fa-lg icon-color"></i>&nbsp;参加人数</h2>
     <p><span style="color: red;"><%= @event.participate_count %></span>/<%= @event.num_of_applicant %></p>
 
   </div>

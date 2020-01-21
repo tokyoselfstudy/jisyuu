@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2020_01_18_074225) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.boolean "is_event_create_enable", default: false, null: false, comment: "イベントが作成可能か？ true: 作成可能 false: デフォルト"
+    t.boolean "is_manager", default: false, null: false, comment: "イベントが作成可能か？ true: 作成可能 false: デフォルト"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

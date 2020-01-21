@@ -10,8 +10,17 @@ Rails.application.routes.draw do
 
   root 'top#index'
   get 'menu', to: 'top#menu'
-  resources :users, only: [:show]
-  resources :events
+  get 'manager_menu/:event_id', to: 'top#manager_menu'
+  resources :users, only: [:show] do
+    member do
+      get 'events'
+    end
+  end
+  resources :events do
+    member do
+      get 'copy'
+    end
+  end
   resources :events_users, only: [:create, :destroy]  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

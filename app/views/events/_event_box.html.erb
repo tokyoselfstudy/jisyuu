@@ -1,0 +1,63 @@
+<%= link_to(event_path(event.id), class: 'text-decoration-none text-body') do %>
+  <div class="card mb-3">
+    <div class="row no-gutters">
+      <div class="col-8">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <h5 class="card-title col-11 p-0 line-1" style="font-size:16px;font-weight: bold;"><%= event.title %></h5>
+            <% if current_user.is_manager %>
+              <p class="col-1 m-0 manager-menu" data-event_id=<%= event.id %> >
+                <i style="color: #B7B7B7;" class="fa fa-ellipsis-v"></i>
+              </p>
+            <% end %>
+          </div>
+          <p class="card-text mb-1"><i style="color: #DC564F;" class="fas fa-map-marker-alt"></i><small class="ml-2"><%= event.place_name.presence || '' %></small></p>
+          <p class="card-text"><i style="color: #DC564F;" class="fas fa-calendar-alt"></i><small class="ml-2"><%= event.event_date_shape %>~</small></p>
+        </div>
+      </div>
+      <div class="col-4 text-center pt-4">
+        <%= image_tag(event.image.variant(resize: "100x100"), class: 'rounded') if event.image.attached? %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<!-- モーダルの設定 @todo bootstrapのmodal設定がうまくいったら差し替える-->
+<%
+=begin
+%>
+<div class="modal fade" id="managerEventMenu" tabindex="-1" role="dialog" aria-labelledby="managerEventMenuTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="managerEventMenuTitle">イベント管理</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul class="list-unstyled">
+          <li class="border-bottom p-4"><i class="fas fa-pencil-alt icon-color mr-2"></i></i><%= link_to 'イベント編集', edit_event_path(event.id), class: 'text-body text-decoration-none' %></li>
+          <li class="p-4"><i class="fas fa-flag icon-color mr-2"></i><%= link_to 'イベント削除', events_path(current_user), class: 'text-body text-decoration-none', method: :delete %></li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="sign-up-btn" data-dismiss="modal">閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%
+=end
+%>
+
+<script>
+  $('.manager-menu').on('click', function(e){
+    e.preventDefault();
+    var event_id;
+    
+    event_id = $(this).data('event_id')
+    window.location.href = `/manager_menu/${event_id}`
+  })
+</script>

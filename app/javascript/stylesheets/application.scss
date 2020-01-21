@@ -53,6 +53,12 @@ body {
   color: #DC564F;
 }
 
+.line-1 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 // devise
 
 .signup-outer {

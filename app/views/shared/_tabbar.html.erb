@@ -1,11 +1,41 @@
-<nav class="fixed-bottom tabbar-frame">
-  <div class="container col-lg-6 col-md-6 d-flex justify-content-between">
-    <%# <div class="nav-item"> %>
-      <i class="fa fa-home nav-item__icon" aria-hidden="true"></i>
-      <%# <span class="nav-item__text">home</span> %>
-    <%# </div> %>
-    <i class="fa fa-flag nav-item__icon" aria-hidden="true"></i>
-    <i class="fa fa-comment nav-item__icon"></i>
-    <i class="fa fa-user-circle nav-item__icon"></i>
-  </div>
-</nav>
+<% if controller.controller_name == 'events' && controller.action_name == 'show' && user_signed_in? %>
+  <nav class="fixed-bottom event-apply-tabbar">
+    <div class="container col-lg-6 col-md-6 d-flex justify-content-around align-items-center">
+      <div>
+        <p class="m-0 text-center" style="font-size:10px;">参加費</p>
+        <p class="m-0 font-weight-bold" style="font-size: 20px;">¥&nbsp;<%= @event.price_label %></p>
+      </div>
+      <div class="">
+      <% if @events_user.present? %>
+        <%= link_to 'キャンセルする', events_user_path(@events_user.id),  class: 'event-apply-btn', method: :delete %>
+      <% else %>
+        <%= link_to '予約する', events_users_path(event_id: @event.id),  class: 'event-apply-btn', method: :post %>
+      <% end %>
+      </div>
+    </div>
+  </nav>
+<% elsif user_signed_in? %>
+  <nav class="fixed-bottom tabbar-frame">
+    <div class="container col-lg-6 col-md-6 d-flex justify-content-between">
+      <%# <div class="nav-item"> %>
+      <a href="/" class="icon-box text-decoration-none">
+        <i class="fa fa-home nav-item__icon" aria-hidden="true"></i>
+        <p class="icon_text">ホーム</p>
+      </a>
+        <%# <span class="nav-item__text">home</span> %>
+      <%# </div> %>
+      <a href="/" class="icon-box text-decoration-none">
+        <i class="fa fa-flag nav-item__icon" aria-hidden="true"></i>
+        <p class="icon_text">イベント</p>
+      </a>
+      <a href="/" class="icon-box text-decoration-none">
+        <i class="fa fa-comment nav-item__icon"></i>
+        <p class="icon_text">メッセージ</p>
+      </a>
+      <a href="/users/<%= current_user.id %>" class="icon-box text-decoration-none">
+        <i class="fa fa-user-circle nav-item__icon"></i>
+        <p class="icon_text">マイページ</p>
+      </a>
+    </div>
+  </nav>
+<% end %>

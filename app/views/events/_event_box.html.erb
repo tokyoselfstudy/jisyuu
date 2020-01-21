@@ -1,0 +1,33 @@
+<%= link_to(event_path(event.id), class: 'text-decoration-none text-body') do %>
+  <div class="card mb-3">
+    <div class="row no-gutters">
+      <div class="col-8">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <h5 class="card-title col-11 p-0 line-1" style="font-size:16px;font-weight: bold;"><%= event.title %></h5>
+            <% if current_user.is_manager %>
+              <p class="col-1 m-0 manager-menu" data-event_id=<%= event.id %> >
+                <i style="color: #B7B7B7;" class="fa fa-ellipsis-v"></i>
+              </p>
+            <% end %>
+          </div>
+          <p class="card-text mb-1"><i style="color: #DC564F;" class="fas fa-map-marker-alt"></i><small class="ml-2"><%= event.place_name.presence || '' %></small></p>
+          <p class="card-text"><i style="color: #DC564F;" class="fas fa-calendar-alt"></i><small class="ml-2"><%= event.event_date_shape %>~</small></p>
+        </div>
+      </div>
+      <div class="col-4 text-center pt-4">
+        <%= image_tag(event.image.variant(resize: "100x100"), class: 'rounded') if event.image.attached? %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<script>
+  $('.manager-menu').on('click', function(e){
+    e.preventDefault();
+    var event_id;
+
+    event_id = $(this).data('event_id')
+    window.location.href = `/manager_menu/${event_id}`
+  })
+</script>

@@ -21,7 +21,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'rails-i18n'
 
 gem 'devise' #ユーザー機能導入
 gem 'devise-i18n' #devise日本語化

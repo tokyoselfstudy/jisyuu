@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Event < ApplicationRecord
   validates :title, presence: true
   validates :num_of_applicant, presence: true, numericality: { greater_than_or_equal_to: 1 }
@@ -16,23 +18,23 @@ class Event < ApplicationRecord
   scope :with_events_user, -> { joins(:events_users) }
   scope :upcoming_events, -> (user_id) do
     return where(nil) if user_id.blank?
-    with_events_user.merge(EventsUser.where(user_id: user_id)).where('event_date > ?', Time.zone.now)
+    with_events_user.merge(EventsUser.where(user_id: user_id)).where("event_date > ?", Time.zone.now)
   end
 
   scope :past_events, -> (user_id) do
     return where(nil) if user_id.blank?
-    with_events_user.merge(EventsUser.where(user_id: user_id)).where('event_date < ?', Time.zone.now)
+    with_events_user.merge(EventsUser.where(user_id: user_id)).where("event_date < ?", Time.zone.now)
   end
 
   def image_presence
     if image.attached?
       if !image.content_type.in?(%('image/jpeg image/png'))
-        errors.add(:image, 'にはjpegまたはpngファイルを添付してください')
+        errors.add(:image, "にはjpegまたはpngファイルを添付してください")
       elsif image.blob.byte_size > 10.megabytes
-        errors.add(:image, 'ファイルのサイズが大きすぎます')
+        errors.add(:image, "ファイルのサイズが大きすぎます")
       end
     else
-      errors.add(:image, 'ファイルを添付してください')
+      errors.add(:image, "ファイルを添付してください")
     end
   end
 
@@ -49,6 +51,6 @@ class Event < ApplicationRecord
   end
 
   def price_label
-    self.fee == 0 ? '無料' : self.fee 
+    self.fee == 0 ? "無料" : self.fee
   end
 end

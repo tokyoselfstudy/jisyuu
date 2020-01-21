@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TopController < ApplicationController
   before_action :authenticate_user!, only: [:menu, :manager_menu]
   before_action :is_manager?, only: [:manager_menu]
@@ -6,7 +8,6 @@ class TopController < ApplicationController
   end
 
   def menu
-    
   end
 
   def manager_menu

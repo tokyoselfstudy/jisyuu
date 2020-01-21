@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
@@ -6,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def events
-    @future_events = Event.where(user_id: params[:id], is_deleted: false).where('event_date > ?', Time.zone.now)
-    @past_events = Event.where(user_id: params[:id], is_deleted: false).where('event_date < ?', Time.zone.now)
+    @future_events = Event.where(user_id: params[:id], is_deleted: false).where("event_date > ?", Time.zone.now)
+    @past_events = Event.where(user_id: params[:id], is_deleted: false).where("event_date < ?", Time.zone.now)
   end
 end

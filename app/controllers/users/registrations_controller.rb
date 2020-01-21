@@ -55,7 +55,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create_birthdate_params
     date = params[:user]
-    Date.new date["birthdate(1i)"].to_i,date["birthdate(2i)"].to_i,date["birthdate(3i)"].to_i
+    Date.new date["birthdate(1i)"].to_i, date["birthdate(2i)"].to_i, date["birthdate(3i)"].to_i
   end
 
   # The path used after sign up.

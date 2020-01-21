@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -13,16 +15,16 @@ class User < ApplicationRecord
   def avatar_presence
     if avatar.attached?
       if !avatar.content_type.in?(%('image/jpeg image/png'))
-        errors.add(:avatar, 'にはjpegまたはpngファイルを添付してください')
+        errors.add(:avatar, "にはjpegまたはpngファイルを添付してください")
       elsif avatar.blob.byte_size > 10.megabytes
-        errors.add(:avatar, 'ファイルのサイズが大きすぎます')
+        errors.add(:avatar, "ファイルのサイズが大きすぎます")
       end
     else
-      errors.add(:avatar, 'ファイルを添付してください')
+      errors.add(:avatar, "ファイルを添付してください")
     end
   end
 
   def view_full_name
-    return "#{self.family_name} #{self.first_name}"
+    "#{self.family_name} #{self.first_name}"
   end
 end

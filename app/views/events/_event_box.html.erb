@@ -22,41 +22,11 @@
   </div>
 <% end %>
 
-<!-- モーダルの設定 @todo bootstrapのmodal設定がうまくいったら差し替える-->
-<%
-=begin
-%>
-<div class="modal fade" id="managerEventMenu" tabindex="-1" role="dialog" aria-labelledby="managerEventMenuTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="managerEventMenuTitle">イベント管理</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <ul class="list-unstyled">
-          <li class="border-bottom p-4"><i class="fas fa-pencil-alt icon-color mr-2"></i></i><%= link_to 'イベント編集', edit_event_path(event.id), class: 'text-body text-decoration-none' %></li>
-          <li class="p-4"><i class="fas fa-flag icon-color mr-2"></i><%= link_to 'イベント削除', events_path(current_user), class: 'text-body text-decoration-none', method: :delete %></li>
-        </ul>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="sign-up-btn" data-dismiss="modal">閉じる</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<%
-=end
-%>
-
 <script>
   $('.manager-menu').on('click', function(e){
     e.preventDefault();
     var event_id;
-    
+
     event_id = $(this).data('event_id')
     window.location.href = `/manager_menu/${event_id}`
   })

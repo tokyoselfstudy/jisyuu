@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :is_manager, only: [:new, :create, :edit, :update, :destroy]
+  before_action :is_manager?, only: [:new, :create, :edit, :update, :destroy]
   before_action :create_event_date_params, only: [:create, :update]
   before_action :create_event_end_date_params, only: [:create, :update]
 
@@ -45,10 +45,12 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     if @event.destroy
       flash[:notice] = 'イベントの削除に成功しました。'
-      redirect_to '/menu'
+      redirect_to events_user_path(current_user)
     else
+      @future_events = Event.where(user_id: current_user.id, is_deleted: false).where('event_date > ?', Time.zone.now)
+      @past_events = Event.where(user_id: current_user.id, is_deleted: false).where('event_date < ?', Time.zone.now)
       flash[:alert] = 'イベントの削除に失敗しました。'
-      render '/menu'
+      redirect_to events_user_path(current_user)
     end
   end
 
@@ -66,9 +68,5 @@ class EventsController < ApplicationController
     def create_event_end_date_params
       date = params[:event]
       Time.zone.local(date["event_end_date(1i)"].to_i,date["event_end_date(2i)"].to_i,date["event_end_date(3i)"].to_i,date["event_end_date(4i)"].to_i,date["event_end_date(5i)"].to_i)
-    end
-
-    def is_manager
-      return redirect_to '/', alert: 'イベントの作成権限がありません。' if user_signed_in? && !current_user.is_manager
     end
 end

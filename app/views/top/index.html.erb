@@ -1,8 +1,13 @@
-<h1>ホーム画面（あとで作る）</h1>
-<p id="hoge">赤色になるよ</p>
-
-<p class="btn btn-primary">hoge</p>
-
-<script>
-
-</script>
+<section>
+  <div class="container col-md-8 col-lg-6 p-0">
+    <%= image_tag('jisyuu-top.jpg', style: 'width: 100%;object-fit: contain;') %>
+  </div>
+</section>
+<section>
+  <div class="container col-md-8 col-lg-6">
+    <div class="">
+      <h1 style="font-size: 24px;" class="mt-4 mb-4"><span><i class="fas fa-flag icon-color mr-2"></i></span>開催イベント一覧</h1>
+      <%= render partial: 'events/event_box', collection: @events, as: 'event' %>
+    </div>
+  </div>
+</section>

@@ -7,7 +7,7 @@
       </div>
       <div class="">
       <% if @events_user.present? %>
-        <%= link_to 'キャンセルする', events_user_path(@events_user.id),  class: 'event-apply-btn', method: :delete %>
+        <%= link_to 'キャンセルする',"/events_users/#{@events_user.id}",  class: 'event-apply-btn', method: :delete %>
       <% else %>
         <%= link_to '予約する', events_users_path(event_id: @event.id),  class: 'event-apply-btn', method: :post %>
       <% end %>

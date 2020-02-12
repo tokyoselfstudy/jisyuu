@@ -1,6 +1,6 @@
 <% if flash.present? %>
   <% flash.each do |key, value| %>
-    <div class="alert alert-<%= flash_background_color(key) %>">
+    <div class="alert alert-<%= flash_background_color(key) %> mb-0">
       <p class="mb-0 text-center"><%= value %></p>
     </div>
 

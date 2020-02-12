@@ -5,7 +5,7 @@
         <div class="card-body">
           <div class="d-flex justify-content-between">
             <h5 class="card-title col-11 p-0 line-1" style="font-size:16px;font-weight: bold;"><%= event.title %></h5>
-            <% if current_user.is_manager %>
+            <% if user_signed_in? && current_user.is_manager %>
               <p class="col-1 m-0 manager-menu" data-event_id=<%= event.id %> >
                 <i style="color: #B7B7B7;" class="fa fa-ellipsis-v"></i>
               </p>

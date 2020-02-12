@@ -84,12 +84,12 @@
 
       <div class=" mb-4 form-group">
         <%= f.label '居住地' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span><br />
-        <%= f.collection_select(:pref_id, CountriesPref.all, :id, :name, {}, class: 'form-control', selected: current_user.pref_id.present? ? current_user.pref_id : 13) %>
+        <%= f.collection_select(:pref_id, CountriesPref.all, :id, :name, { selected: current_user.pref_id.present? ? current_user.pref_id : '13' }, class: 'form-control') %>
       </div>
 
       <div class=" mb-4 form-group">
         <%= f.label '職業' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span><br />
-        <%= f.collection_select(:users_category_id, UsersCategory.all, :id, :name, {}, class: 'form-control', selected: current_user.users_category_id.present? ? current_user.users_category_id : '') %>
+        <%= f.collection_select(:users_category_id, UsersCategory.all, :id, :name, { selected: current_user.users_category_id.present? ? current_user.users_category_id : '' }, class: 'form-control') %>
       </div>
 
       <div class=" mb-4 form-group">

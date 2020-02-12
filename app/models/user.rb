@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
 
   has_one_attached :avatar
-  validate :avatar_presence
+  validate :avatar_presence, on: :update
 
   has_many :event
   has_many :events_users

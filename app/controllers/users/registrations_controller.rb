@@ -12,17 +12,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    params[:user][:birthdate] = create_birthdate_params
     super
   end
-
+  
   # GET /resource/edit
   def edit
     super
   end
-
+  
   # PUT /resource
   def update
+    params[:user][:birthdate] = create_birthdate_params
     super
   end
 

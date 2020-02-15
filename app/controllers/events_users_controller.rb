@@ -5,26 +5,44 @@ class EventsUsersController < ApplicationController
   before_action :within_event_capacity?, only: :create
 
   def create
+    @event = Event.find(events_users_params[:event_id])
     events_user = current_user.events_users.build(events_users_params)
-    if events_user.save
-      flash[:notice] = "参加登録が完了しました。"
-      redirect_to event_path(@event.id)
-    else
+    room = Room.find_by(event_id: @event.id)
+    begin
+      ActiveRecord::Base.transaction do
+        # イベントの参加と同時にEntryテーブル（メッセの参加を制御するテーブル）にもレコードを入れる。
+        events_user.save!
+        room.entries.create!(
+          user_id: current_user.id,
+          event_id: @event.id,
+        )
+      end
+    rescue => e
+      logger.error "イベント参加エラー: #{e}"
       flash[:alert] = "参加登録に失敗しました。"
-      render event_path(@event.id)
+      return render event_path(@event.id)
     end
+    flash[:notice] = "参加登録が完了しました。"
+    redirect_to event_path(@event.id)
   end
 
   def destroy
     events_user = EventsUser.find(events_cancel_params[:id])
     @event = Event.find(events_user.event_id)
-    if events_user.destroy
-      flash[:notice] = "参加登録をキャンセルしました。"
-      redirect_to event_path(@event.id)
-    else
+    entry = Entry.find_by(event_id: @event.id, user_id: current_user.id)
+    begin
+      ActiveRecord::Base.transaction do
+        # イベントの参加キャンセルと同時にEntryテーブル（メッセの参加を制御するテーブル）のレコードも物理削除。
+        events_user.destroy!
+        entry.destroy!
+      end
+    rescue => e
+      logger.error "イベント参加キャンセルエラー: #{e}"
       flash[:alert] = "参加登録のキャンセルに失敗しました。"
       render event_path(@event.id)
     end
+    flash[:notice] = "参加登録をキャンセルしました。"
+    redirect_to event_path(@event.id)
   end
 
   private

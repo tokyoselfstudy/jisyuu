@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
   validate :avatar_presence, on: :update
 
-  has_many :event
+  has_many :events
   has_many :events_users
 
   def avatar_presence

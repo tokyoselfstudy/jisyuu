@@ -15,17 +15,22 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = current_user.event.build(event_params)
+    @event = current_user.events.build(event_params)
     @event.event_date = create_event_date_params
     @event.event_end_date = create_event_end_date_params
 
-    if @event.save
-      flash[:notice] = "イベントを作成しました。"
-      redirect_to event_path(@event.id)
-    else
+    begin
+      ActiveRecord::Base.transaction do
+        @event.save!
+        @event.create_room!(is_deleted: false)
+      end
+    rescue => e
+      logger.error "イベント作成エラー: #{e}"
       flash[:alert] = "イベントの作成に失敗しました。"
-      render :new
+      return render :new
     end
+    flash[:notice] = "イベントを作成しました。"
+    return redirect_to event_path(@event.id)
   end
 
   def edit

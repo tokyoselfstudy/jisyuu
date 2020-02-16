@@ -1,2 +1,15 @@
-<h1>Rooms#show</h1>
-<p>Find me in app/views/rooms/show.html.erb</p>
+<section>
+  <div class="container col-md-8 col-lg-6">
+    <ul class="list-group list-group-flush">
+      <% @messages.each do |message| %>
+        
+          <li class="list-group-item">
+            <div class="d-flex align-items-center col-10 p-0">
+              <p class="mb-0 ml-3 font-weight-bold"><%= message.sender&.family_name %></p>
+              <p class="mb-0 ml-3 font-weight-bold"><%= message.body %></p>
+            </div>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+</section>

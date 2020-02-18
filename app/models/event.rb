@@ -11,8 +11,9 @@ class Event < ApplicationRecord
   has_one_attached :image
   validate :image_presence
 
-  has_many :events_users
+  has_many :events_users, dependent: :destroy
   has_many :participants_user, through: :events_users
+  has_one :room, dependent: :destroy
   belongs_to :user
 
   scope :with_events_user, -> { joins(:events_users) }

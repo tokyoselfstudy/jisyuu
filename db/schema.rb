@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_18_074225) do
+ActiveRecord::Schema.define(version: 2020_02_13_121626) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -39,6 +39,15 @@ ActiveRecord::Schema.define(version: 2020_01_18_074225) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "entries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "room_id", null: false, comment: "room.id"
+    t.integer "user_id", null: false, comment: "user.id"
+    t.integer "event_id", comment: "event.id"
+    t.boolean "is_deleted", default: false, null: false, comment: "削除フラグ true: 削除済み false: デフォルト"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "user_id", null: false, comment: "user.id"
     t.string "title", default: "", null: false
@@ -60,6 +69,31 @@ ActiveRecord::Schema.define(version: 2020_01_18_074225) do
   create_table "events_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "event_id", null: false, comment: "event.id"
     t.integer "user_id", null: false, comment: "user.id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "room_id", null: false, comment: "room.id"
+    t.integer "sender_id", null: false, comment: "メッセージを送ったユーザーID"
+    t.text "body", null: false, comment: "メッセージ本文"
+    t.boolean "is_deleted", default: false, null: false, comment: "削除フラグ true: 削除済み false: デフォルト"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "messages_receivers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "receiver_id", null: false, comment: "メッセージを受け取ったユーザーのID"
+    t.integer "message_id", null: false, comment: "message.id"
+    t.boolean "read_status", default: false, null: false, comment: "メッセージの既読フラグ true: 既読 false: 未読"
+    t.boolean "is_deleted", default: false, null: false, comment: "削除フラグ true: 削除済み false: デフォルト"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "event_id", comment: "event.id"
+    t.boolean "is_deleted", default: false, null: false, comment: "削除フラグ true: 削除済み false: デフォルト"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,0 +1,16 @@
+<section>
+  <div class="container col-md-8 col-lg-6">
+    <ul class="list-group list-group-flush">
+      <% @event_rooms.each do |room| %>
+        <%= link_to(room_path(room), style: 'color: black;') do %>
+          <li class="list-group-item">
+            <div class="d-flex align-items-center col-10 p-0">
+              <%= image_tag(room.event.image.variant(resize: "100x100"), class: 'user-circle-image rounded-circle') if room.event.image.attached? %>
+              <p class="mb-0 ml-3 font-weight-bold"><span class="badge badge-light mr-2">イベント</span><%= room.event.title %></p>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</section>

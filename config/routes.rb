@@ -21,6 +21,8 @@ Rails.application.routes.draw do
       get 'copy'
     end
   end
-  resources :events_users, only: [:create, :destroy]  
+  resources :events_users, only: [:create, :destroy]
+  resources :rooms, only: [:index, :show]
+  resources :messages, only: [:create, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

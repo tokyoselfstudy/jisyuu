@@ -1,0 +1,37 @@
+<section>
+  <div class="container col-md-8 col-lg-6 p-0" style="height: 100%;background:#e1ebf3;">
+    <% @messages.each do |message| %>
+      <div class="line-bc m-0">
+        <% unless is_same_user?(current_user.id, message.sender.id) %>
+        <div class="balloon6">
+          <div class="faceicon">
+            <%= image_tag(message.sender.avatar.variant(resize: "100x100"), class: 'user-circle-image rounded-circle') if message.sender.avatar.attached? %>
+          </div>
+        <p class="message-username"><%= message.sender.view_full_name %></p>
+
+          <div class="chatting">
+            <div class="says col-10 mr-auto">
+              <p><%= text_url_to_link(hbr(message.body)).html_safe %></p>
+            </div>
+          </div>
+        </div>
+        <% else %>
+        <div class="col-10 ml-auto mycomment">
+          <p><%= text_url_to_link(hbr(message.body)).html_safe %></p>
+        </div>
+          <% if @read_count_array[message.id].present? %>
+            <p class="mb-0 read-status-string">既読<%= @read_count_array[message.id] %></p>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+<script>
+$(document).ready( function(){
+  var element = document.documentElement;
+  var bottom = element.scrollHeight - element.clientHeight;
+  window.scroll(0, bottom);
+});
+</script>

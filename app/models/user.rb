@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
   validate :avatar_presence, on: :update
 
-  has_many :event
+  has_many :events
   has_many :events_users
 
   def avatar_presence
@@ -25,6 +25,6 @@ class User < ApplicationRecord
   end
 
   def view_full_name
-    "#{self.family_name} #{self.first_name}"
+    "#{self&.family_name} #{self&.first_name}"
   end
 end

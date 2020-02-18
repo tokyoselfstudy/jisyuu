@@ -17,7 +17,9 @@
         <div class="col-10 ml-auto mycomment">
           <p><%= text_url_to_link(hbr(message.body)).html_safe %></p>
         </div>
-        <p>hoge</p>
+          <% if @read_count_array[message.id].present? %>
+            <p class="mb-0 read-status-string">既読<%= @read_count_array[message.id] %></p>
+          <% end %>
         <% end %>
       </div>
     <% end %>

@@ -9,7 +9,8 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
-    @messages = @room.messages.where(is_deleted: false).order(:created_at)
+    @messages = @room.messages.eager_load(:messages_receivers).where(is_deleted: false).order(:created_at)
+    @read_count_array = MessagesReceiver.where(message_id: @messages.pluck(:id), read_status: true).group(:message_id).count
     @new_message = Message.new
   end
 

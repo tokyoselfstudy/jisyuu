@@ -235,7 +235,7 @@ body {
 
 /*以下、右側の緑コメント*/
 .mycomment {
-  margin: 10px 0;
+  margin: 0 0;
 }
 .mycomment p {
   display: inline-block;
@@ -266,4 +266,9 @@ body {
   border-radius: 5px;
   background-color: #DC564F;
   color: white;
+}
+
+.read-status-string {
+  margin-right: 30px;
+  color: #969a96;
 }

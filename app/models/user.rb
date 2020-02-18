@@ -25,6 +25,6 @@ class User < ApplicationRecord
   end
 
   def view_full_name
-    "#{self.family_name} #{self.first_name}"
+    "#{self&.family_name} #{self&.first_name}"
   end
 end

@@ -1,15 +1,33 @@
 <section>
-  <div class="container col-md-8 col-lg-6">
-    <ul class="list-group list-group-flush">
-      <% @messages.each do |message| %>
-        
-          <li class="list-group-item">
-            <div class="d-flex align-items-center col-10 p-0">
-              <p class="mb-0 ml-3 font-weight-bold"><%= message.sender&.family_name %></p>
-              <p class="mb-0 ml-3 font-weight-bold"><%= message.body %></p>
+  <div class="container col-md-8 col-lg-6 p-0" style="height: 100%;background:#e1ebf3;">
+    <% @messages.each do |message| %>
+      <div class="line-bc m-0">
+        <% unless is_same_user?(current_user.id, message.sender.id) %>
+        <div class="balloon6">
+          <div class="faceicon">
+            <%= image_tag(message.sender.avatar.variant(resize: "100x100"), class: 'user-circle-image rounded-circle') if message.sender.avatar.attached? %>
+          </div>
+          <div class="chatting">
+            <div class="says col-10 mr-auto">
+              <p><%= text_url_to_link(hbr(message.body)).html_safe %></p>
             </div>
-          </li>
-      <% end %>
-    </ul>
+          </div>
+        </div>
+        <% else %>
+        <div class="col-10 ml-auto mycomment">
+          <p><%= text_url_to_link(hbr(message.body)).html_safe %></p>
+        </div>
+        <p>hoge</p>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </section>
+
+<script>
+$(document).ready( function(){
+  var element = document.documentElement;
+  var bottom = element.scrollHeight - element.clientHeight;
+  window.scroll(0, bottom);
+});
+</script>

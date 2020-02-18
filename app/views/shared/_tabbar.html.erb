@@ -15,18 +15,17 @@
     </div>
   </nav>
 <% elsif controller.controller_name == 'rooms' && controller.action_name == 'show' || controller.controller_name == 'messages' && user_signed_in? %>
-  <nav class="fixed-bottom tabbar-frame">
+  <nav class="fixed-bottom message-tabbar-frame">
     <div class="container col-lg-6 col-md-6">
       <%= form_with(model: @new_message, local: true) do |f| %>
-        <div class="row d-flex">
-            <div class="col-10">
+        <div class="row d-flex justify-content-between">
+            <div class="pl-2 pr-2" style="width: 80%">
               <%= f.hidden_field :room_id, value: @room.id %>
               <%= f.hidden_field :sender_id, value: current_user.id %>
-              <%= f.text_area :body, autofocus: true, class: 'form-control', style:'overflow-wrap
-;', rows: 1 %>
+              <%= f.text_area :body, autofocus: true, class: 'form-control mx-auto', style:'overflow-wrap;', rows: 1 %>
             </div>
-            <div class="col-2 pl-0">
-              <%= f.submit "送信", class: 'sign-up-btn', style: 'height: 38px;' %>
+            <div class="pl-1 pr-2" style="width: 20%;">
+              <%= f.submit "送信", class: 'message-btn', style: 'height: 38px;' %>
             </div>
         </div>
       <% end %>

@@ -1,14 +1,12 @@
-<section>
-  <div class="container col-md-8 col-lg-6 p-0" style="height: 100%;background:#e1ebf3;">
+  <div class="container col-md-8 col-lg-6" style="min-height: 100%;background:#e1ebf3;padding-bottom: 66px;">
     <% @messages.each do |message| %>
       <div class="line-bc m-0">
-        <% unless is_same_user?(current_user.id, message.sender.id) %>
+        <% unless is_same_user?(current_user.id, message&.sender&.id) %>
         <div class="balloon6">
           <div class="faceicon">
-            <%= image_tag(message.sender.avatar.variant(resize: "100x100"), class: 'user-circle-image rounded-circle') if message.sender.avatar.attached? %>
+            <%= image_tag(message.sender.avatar.variant(resize: "100x100"), class: 'user-circle-image rounded-circle') if message&.sender.present? && message.sender.avatar.attached? %>
           </div>
-        <p class="message-username"><%= message.sender.view_full_name %></p>
-
+        <p class="message-username"><%= message&.sender.present? ? message.sender.view_full_name : "" %></p>
           <div class="chatting">
             <div class="says col-10 mr-auto">
               <p><%= text_url_to_link(hbr(message.body)).html_safe %></p>
@@ -19,14 +17,13 @@
         <div class="col-10 ml-auto mycomment">
           <p><%= text_url_to_link(hbr(message.body)).html_safe %></p>
         </div>
-          <% if @read_count_array[message.id].present? %>
-            <p class="mb-0 read-status-string">既読<%= @read_count_array[message.id] %></p>
+          <% if @read_count_hash[message.id].present? %>
+            <p class="mb-0 read-status-string">既読<%= @read_count_hash[message.id] %></p>
           <% end %>
         <% end %>
       </div>
     <% end %>
   </div>
-</section>
 
 <script>
 $(document).ready( function(){

@@ -14,12 +14,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
   end
-  
+
   # GET /resource/edit
   def edit
     super
   end
-  
+
   # PUT /resource
   def update
     params[:user][:birthdate] = create_birthdate_params

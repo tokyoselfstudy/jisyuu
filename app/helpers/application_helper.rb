@@ -12,10 +12,11 @@ module ApplicationHelper
   end
 
   def is_same_user?(user_id, user_id_2)
+    return false unless user_id.present? && user_id_2.present?
     user_id == user_id_2
   end
 
-  # 文字列のセキュリティを担保し改行があればbrタグを入れる
+  # 入力された文字列のセキュリティを担保し改行があればbrタグを入れる
   def hbr(text)
     text = html_escape(text)
     text.gsub(/\r\n|\r|\n/, "<br />")
@@ -23,7 +24,6 @@ module ApplicationHelper
 
   # uriを含む文字列であれば、aタグに置き換える
   def text_url_to_link(text)
-
     URI.extract(text, ["http", "https"]).uniq.each do |url|
       text.gsub!(url, "<a href=\"#{url}\" target=\"_blank\">#{url}</a>")
     end

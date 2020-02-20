@@ -29,7 +29,7 @@ gem "devise" # ユーザー機能導入
 gem "devise-i18n" # devise日本語化
 gem "devise-i18n-views"
 
-gem 'activerecord-import' # バルクインサート
+gem "activerecord-import" # バルクインサート
 
 # Use Active Storage variant
 gem "image_processing", "~> 1.2"

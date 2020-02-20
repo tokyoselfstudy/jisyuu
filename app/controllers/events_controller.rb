@@ -30,7 +30,7 @@ class EventsController < ApplicationController
       return render :new
     end
     flash[:notice] = "イベントを作成しました。"
-    return redirect_to event_path(@event.id)
+    redirect_to event_path(@event.id)
   end
 
   def edit

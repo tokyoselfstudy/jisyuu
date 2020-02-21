@@ -24,6 +24,10 @@ class MessagesController < ApplicationController
     rescue => e
       logger.error "メッセージ送信エラー: #{e}"
       @messages = @room.messages.where(is_deleted: false).order(:created_at)
+      @read_count_hash = MessagesReceiver
+                        .where(message_id: @messages.pluck(:id), read_status: true)
+                        .group(:message_id)
+                        .count
       return render "rooms/show", alert: "メッセージの送信に失敗しました。"
     end
     redirect_to room_path(@room)

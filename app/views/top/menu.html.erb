@@ -16,14 +16,13 @@
     </ul>
   </div>
 </section>
+<% if current_user.is_admin? %>
 <section class="event-content-block">
   <div class="container col-md-8 col-lg-6">
     <h2 class="p-2" style="font-size: 20px;font-weight: bold;">管理者メニュー</h2>
     <ul class="list-unstyled">
-      <li class="border-bottom p-4">hogehoge</li>
-      <li class="border-bottom p-4">hogehoge</li>
-      <li class="border-bottom p-4">hogehoge</li>
-      <li class="border-bottom p-4">hogehoge</li>
+      <li class="border-bottom p-4"><%= link_to "ユーザー管理", admin_users_path, class: 'text-body text-decoration-none' %></li>
     </ul>
   </div>
 </section>
+<% end %>

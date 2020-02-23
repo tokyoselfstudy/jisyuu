@@ -30,6 +30,7 @@ gem "devise-i18n" # devise日本語化
 gem "devise-i18n-views"
 
 gem "activerecord-import" # バルクインサート
+gem "ransack" #検索用のgem
 
 # Use Active Storage variant
 gem "image_processing", "~> 1.2"

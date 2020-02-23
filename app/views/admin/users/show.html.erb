@@ -1,0 +1,26 @@
+<div class="main mt-5">
+  <div class="container col-lg-5 col-md-5">
+    <div class="profile-block pb-3">
+      <div class="d-flex justify-content-between">
+        <%= image_tag(@user.avatar.variant(resize: "100x100"), class: 'rounded') if @user.avatar.attached? %>
+      </div>
+      <p class="mt-4 mb-0 font-weight-bold">氏名: <%= @user.view_full_name %></p>
+      <p class="font-weight-bold" style="color:gray;">学習している事: <%= @user.studying %></p>
+      <p style="word-wrap: break-word;"><%= @user.introduction.present? ? @user.introduction : 'プロフィール文未設定' %></p>
+    </div>
+    <div class="p-3" style="border-top: solid 1px black">
+      <h1 class="mt-4 mb-4 font-weight-bold" style="font-size: 24px;">設定</h1>
+        <%= form_with(model: @user, url: admin_user_path(@user), local: true, method: :patch ) do |f| %>
+          <h3 style="font-size: 18px;font-weight: bold;">管理人ステータス</h3>
+          <%= f.radio_button(:is_manager, true) %>
+          <%= f.label(:is_manager, "管理人", value: true)  %>
+          <%= f.radio_button(:is_manager, false) %>
+          <%= f.label(:is_manager, "非管理人", value: false) %>
+          <div class="actions">
+            <%= f.submit "更新する", class: 'sign-up-btn btn-block mt-5' %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>
+

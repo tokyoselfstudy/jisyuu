@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   before_action :create_event_end_date_params, only: [:create, :update]
 
   def new
-    @event = current_user.event.build
+    @event = current_user.events.build
   end
 
   def show

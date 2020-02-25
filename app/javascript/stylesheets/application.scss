@@ -82,6 +82,13 @@ body {
   text-overflow: ellipsis;
 }
 
+// ページネーション
+
+.pagination>li>a {
+  border: none;
+  color: #696969;
+}
+
 // devise
 
 .signup-outer {

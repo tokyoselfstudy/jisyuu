@@ -6,13 +6,13 @@ class Event < ApplicationRecord
   validates :event_date, presence: true
   validates :event_end_date, presence: true
   validates :place_name, presence: true
-  validates :reason, presence: true
+  validates :detail, presence: true
 
   has_one_attached :image
   validate :image_presence
 
   has_many :events_users, dependent: :destroy
-  has_many :participants_user, through: :events_users
+  has_many :participants_users, through: :events_users, source: :user
   has_one :room, dependent: :destroy
   belongs_to :user
 

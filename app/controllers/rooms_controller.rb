@@ -6,9 +6,15 @@ class RoomsController < ApplicationController
 
   def index
     entry_rooms_ids = Entry
-                        .where(user_id: current_user.id, is_deleted: false).where.not(event_id: nil).pluck(:room_id)
+                        .with_event
+                        .where(user_id: current_user.id, is_deleted: false)
+                        .where.not(event_id: nil)
+                        .order('events.event_date')
+                        .pluck(:room_id)
+
     @event_rooms = Room.eager_load(:event)
                        .where(id: entry_rooms_ids)
+                       .order(['field(rooms.id, ?)', entry_rooms_ids])
   end
 
   def show
@@ -22,7 +28,10 @@ class RoomsController < ApplicationController
                         .count
     @new_message = Message.new
     # 　現在のユーザーのMessagesReceiverのレコードを更新する
-    MessagesReceiver.where(message_id: @room.messages.pluck(:id), receiver_id: current_user.id, is_deleted: false, read_status: false).update_all(read_status: true)
+    MessagesReceiver
+      .where(message_id: @room.messages
+      .pluck(:id), receiver_id: current_user.id, is_deleted: false, read_status: false)
+      .update_all(read_status: true)
   end
 
   private

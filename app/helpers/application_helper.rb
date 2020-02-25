@@ -16,6 +16,10 @@ module ApplicationHelper
     user_id == user_id_2
   end
 
+  def datetime_disp(datetime)
+    datetime.present? ? datetime.strftime("%Y/%m/%d#{datetime.strftime("(#{%w[日 月 火 水 木 金 土][datetime.wday]})")} %H:%M") : ''
+  end
+
   # 入力された文字列のセキュリティを担保し改行があればbrタグを入れる
   def hbr(text)
     text = html_escape(text)

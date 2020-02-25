@@ -65,6 +65,9 @@ class EventsController < ApplicationController
     @copy_event = Event.find(params[:id])
     @event = current_user.events.build
     @event = @copy_event.dup
+
+    @event.event_date = Time.zone.now
+    @event.event_end_date = Time.zone.now
     render :new
   end
 

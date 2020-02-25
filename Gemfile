@@ -31,6 +31,7 @@ gem "devise-i18n-views"
 
 gem "activerecord-import" # バルクインサート
 gem "ransack" #検索用のgem
+gem 'kaminari' #ページネーション
 
 # Use Active Storage variant
 gem "image_processing", "~> 1.2"

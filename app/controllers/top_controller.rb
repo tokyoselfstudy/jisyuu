@@ -5,7 +5,12 @@ class TopController < ApplicationController
   before_action :is_manager?, only: [:manager_menu]
 
   def index
-    @events = Event.where(is_deleted: false).where("event_date > ?", Time.zone.now)
+      @events = Event
+                  .where(is_deleted: false)
+                  .where("event_date > ?", Time.zone.now)
+                  .order(:event_date)
+                  .page(params[:page])
+                  .per(10)
   end
 
   def menu

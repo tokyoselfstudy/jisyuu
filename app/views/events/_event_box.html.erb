@@ -11,7 +11,7 @@
               </p>
             <% end %>
           </div>
-          <p class="card-text mb-1"><i style="color: #DC564F;" class="fas fa-map-marker-alt"></i><small class="ml-2"><%= event.place_name.presence || '' %></small></p>
+          <p class="card-text mb-1"><i style="color: #DC564F;" class="fas fa-map-marker-alt"></i><small class="ml-2"><%= event&.place_name.presence || '' %></small></p>
           <p class="card-text"><i style="color: #DC564F;" class="fas fa-calendar-alt"></i><small class="ml-2"><%= event.event_date_shape %>~</small></p>
         </div>
       </div>

@@ -61,6 +61,13 @@ class EventsController < ApplicationController
     end
   end
 
+  def copy
+    @copy_event = Event.find(params[:id])
+    @event = current_user.events.build
+    @event = @copy_event.dup
+    render :new
+  end
+
   private
     def event_params
       params.require(:event).permit(:title, :detail, :event_date, :event_end_date, :place_name, :place_address, :place_url, :num_of_applicant, :reason, :target, :fee, :image)

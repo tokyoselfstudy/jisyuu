@@ -14,11 +14,12 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     member do
       get 'events'
+      get 'copy_events'
     end
   end
   resources :events do
     member do
-      get 'copy'
+      post 'copy'
     end
   end
   resources :events_users, only: [:create, :destroy]

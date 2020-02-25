@@ -27,4 +27,8 @@ class User < ApplicationRecord
   def view_full_name
     "#{self&.family_name} #{self&.first_name}"
   end
+
+  def is_manager?
+    self.is_manager
+  end
 end

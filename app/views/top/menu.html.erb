@@ -12,7 +12,7 @@
       <% end %>
       <li class="border-bottom p-4"><i class="fas fa-user icon-color mr-2"></i><%= link_to 'プロフィール編集', edit_user_registration_path, class: 'text-body text-decoration-none' %></li>
       <li class="border-bottom p-4"><i class="fas fa-sign-out-alt mr-2 icon-color"></i><%= link_to 'ログアウト', destroy_user_session_path, class: 'text-body text-decoration-none', method: :delete, data: {confirm: "ログアウトしてよろしいですか？"} %></li>
-      <li class="p-4"><%= link_to '退会', user_registration_path, class: 'text-body text-decoration-none', method: :delete, data: {confirm: "退会してよろしいですか？"} %></li>
+      <li class="p-4"><i class="fa fa-times mr-2 icon-color"></i>	<%= link_to '退会', user_registration_path, class: 'text-body text-decoration-none', method: :delete, data: {confirm: "退会してよろしいですか？"} %></li>
     </ul>
   </div>
 </section>

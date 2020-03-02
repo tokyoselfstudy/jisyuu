@@ -58,6 +58,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     Date.new date["birthdate(1i)"].to_i, date["birthdate(2i)"].to_i, date["birthdate(3i)"].to_i
   end
 
+  # deviseのupdate_resourceをオーバーライドしてパスワードなしで更新を許可する
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
+
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
   #   super(resource)

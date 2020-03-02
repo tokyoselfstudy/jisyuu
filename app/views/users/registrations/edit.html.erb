@@ -113,25 +113,6 @@
         <%= f.text_area :introduction, autofocus: true, class: 'form-control', rows: 8 %>
       </div>
 
-      <div class="field">
-        <%= f.label :password %> <i></i><br />
-        <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
-        <% if @minimum_password_length %>
-          <br />
-          <em><%= @minimum_password_length %> characters minimum</em>
-        <% end %>
-      </div>
-
-      <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
-      </div>
-
-      <div class="field">
-        <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-        <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control' %>
-      </div>
-
       <div class="actions">
         <%= f.submit "更新する", class: 'sign-up-btn btn-block mt-3' %>
       </div>

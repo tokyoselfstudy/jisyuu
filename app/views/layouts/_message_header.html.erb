@@ -1,0 +1,12 @@
+<div class="message-header fixed-top">
+  <div class="container col-md-8 col-lg-6 d-flex align-items-center">
+    <% if @room.event_message? %>
+      <%= link_to rooms_path do %>
+        <i class="fas fa-angle-left main-color" style="font-size: 25px;"></i>
+      <% end %>
+      <p class="message-header-title mx-auto mb-0 font-weight-bold"><%= link_to("#{@room.event.title}",event_path(@room.event), class: 'message-header-title black-color') %></p>
+    <% else %>
+
+    <% end %>
+  </div>
+</div>

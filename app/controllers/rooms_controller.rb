@@ -27,11 +27,12 @@ class RoomsController < ApplicationController
                         .group(:message_id)
                         .count
     @new_message = Message.new
-    # 　現在のユーザーのMessagesReceiverのレコードを更新する
+    # 現在のユーザーのMessagesReceiverのレコードを更新する
     MessagesReceiver
       .where(message_id: @room.messages
       .pluck(:id), receiver_id: current_user.id, is_deleted: false, read_status: false)
       .update_all(read_status: true)
+    render layout: 'message'
   end
 
   private

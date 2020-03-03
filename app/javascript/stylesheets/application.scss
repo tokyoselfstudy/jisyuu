@@ -1,5 +1,6 @@
 @import '~bootstrap/scss/bootstrap';
 
+$main-color: #DC564F;
 *, *:before, *:after {
   -webkit-box-sizing: border-box;
   box-sizing: border-box
@@ -13,6 +14,7 @@ html {
 body {
   height: 100%;
   padding-bottom: 66px;
+  padding-top: 61px;
 }
 
 // header
@@ -39,6 +41,14 @@ body {
 }
 
 // Utility
+.main-color {
+  color: $main-color;
+}
+
+.black-color {
+  color: black;
+}
+
 .block-btn {
   padding: 10px;
   border: solid 1px lightgray;
@@ -209,6 +219,23 @@ body {
 
 
 // message
+.message-header {
+  background-color: white;
+  text-align: center;
+  padding: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.message-header-title {
+  text-decoration: none;
+  &:hover {
+    opacity: 0.8;
+    text-decoration: none;
+  }
+}
+
 .message-tabbar-frame {
   padding: 14px 0 14px 0;
   background-color: #f1f1f1;

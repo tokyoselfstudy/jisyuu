@@ -1,0 +1,27 @@
+<div class="container col-lg-5 col-md-5">
+  <h1 class="mt-3" style="font-size: 20px;font-weight: bold;"><i class="fas fa-flag icon-color mr-2"></i>管理イベント一覧</h1>
+  <ul id="myTabs" class="nav">
+    <li role="presentation" class="active tab-layout tab-active"><a href="#home"  aria-controls="home" role="tab" data-toggle="tab" class="nav-link tab-font-color">開催予定イベント</a></li>
+    <li role="presentation" class="tab-layout "><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" class="nav-link tab-font-color">過去開催イベント</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active fade show" id="home">
+      <% @future_events.each do |event| %>
+        <%= render 'events/event_box', event: event %>
+      <% end %>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="profile">
+      <% @past_events.each do |event| %>
+        <%= render 'events/event_box', event: event %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script>
+  $('.tab-layout').on('click', function () {
+    $('.tab-layout').removeClass('tab-active')
+    $(this).addClass('tab-active')
+  })
+</script>

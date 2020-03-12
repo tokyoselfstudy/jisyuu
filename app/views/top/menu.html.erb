@@ -1,0 +1,28 @@
+<div class="container col-md-8 col-lg-6">
+  <h1 class="p-2" style="font-size: 20px;font-weight: bold;">メニュー</h1>
+  <%= image_tag(current_user.avatar.variant(resize: "100x100"), class: 'rounded-circle user-circle-image mb-2') if current_user.avatar.attached? %>
+  <p class="d-inline mb-1"><%= current_user.view_full_name %>さん</p>
+</div>
+<section class="event-content-block">
+  <div class="container col-md-8 col-lg-6">
+    <ul class="list-unstyled">
+      <% if current_user.is_manager %>
+        <li class="border-bottom p-4"><i class="fas fa-pencil-alt icon-color mr-2"></i></i><%= link_to 'イベント作成', new_event_path, class: 'text-body text-decoration-none' %></li>
+        <li class="border-bottom p-4"><i class="fas fa-flag icon-color mr-2"></i><%= link_to 'イベント管理', events_user_path(current_user), class: 'text-body text-decoration-none' %></li>
+      <% end %>
+      <li class="border-bottom p-4"><i class="fas fa-user icon-color mr-2"></i><%= link_to 'プロフィール編集', edit_user_registration_path, class: 'text-body text-decoration-none' %></li>
+      <li class="border-bottom p-4"><i class="fas fa-sign-out-alt mr-2 icon-color"></i><%= link_to 'ログアウト', destroy_user_session_path, class: 'text-body text-decoration-none', method: :delete, data: {confirm: "ログアウトしてよろしいですか？"} %></li>
+      <li class="p-4"><i class="fa fa-times mr-2 icon-color"></i>	<%= link_to '退会', user_registration_path, class: 'text-body text-decoration-none', method: :delete, data: {confirm: "退会してよろしいですか？"} %></li>
+    </ul>
+  </div>
+</section>
+<% if current_user.is_admin? %>
+<section class="event-content-block">
+  <div class="container col-md-8 col-lg-6">
+    <h2 class="p-2" style="font-size: 20px;font-weight: bold;">管理者メニュー</h2>
+    <ul class="list-unstyled">
+      <li class="border-bottom p-4"><%= link_to "ユーザー管理", admin_users_path, class: 'text-body text-decoration-none' %></li>
+    </ul>
+  </div>
+</section>
+<% end %>

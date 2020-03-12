@@ -1,4 +1,4 @@
-<div class="main mt-5">
+<div class="main mt-5" style="margin-bottom:100px;">
   <div class="container col-lg-5 col-md-5">
     <div class="signup-form">
 
@@ -74,14 +74,28 @@
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
 
+      <div class="field mb-4">
+        <%= f.label 'プロフィール写真' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span><br />
+        <% if @user.avatar.attached? %>
+          <div class="filefield">
+            <%= image_tag(@user.avatar.variant(resize: "150x150"), class: 'w-100 event-img text-center mb-2') %>
+          </div>
+        <% else %>
+          <div class="filefield">
+            
+          </div>
+        <% end %>
+        <%= f.file_field :avatar, class: 'p-3 upfile', style: 'border: solid 1px lightgray;width:100%;border-radius:5px;' %>
+      </div>
+
       <div class=" mb-4 form-group">
         <%= f.label '居住地' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span><br />
-        <%= f.collection_select(:pref_id, CountriesPref.all, :id, :name, {}, class: 'form-control', selected: current_user.pref_id.present? ? current_user.pref_id : 13) %>
+        <%= f.collection_select(:pref_id, CountriesPref.all, :id, :name, { selected: current_user.pref_id.present? ? current_user.pref_id : '13' }, class: 'form-control') %>
       </div>
 
       <div class=" mb-4 form-group">
         <%= f.label '職業' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span><br />
-        <%= f.collection_select(:users_category_id, UsersCategory.all, :id, :name, {}, class: 'form-control', selected: current_user.users_category_id.present? ? current_user.users_category_id : '') %>
+        <%= f.collection_select(:users_category_id, UsersCategory.all, :id, :name, { selected: current_user.users_category_id.present? ? current_user.users_category_id : '' }, class: 'form-control') %>
       </div>
 
       <div class=" mb-4 form-group">
@@ -97,25 +111,6 @@
       <div class="field mb-4">
         <%= f.label '自己紹介' %><br />
         <%= f.text_area :introduction, autofocus: true, class: 'form-control', rows: 8 %>
-      </div>
-
-      <div class="field">
-        <%= f.label :password %> <i></i><br />
-        <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
-        <% if @minimum_password_length %>
-          <br />
-          <em><%= @minimum_password_length %> characters minimum</em>
-        <% end %>
-      </div>
-
-      <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
-      </div>
-
-      <div class="field">
-        <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-        <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control' %>
       </div>
 
       <div class="actions">
@@ -139,9 +134,33 @@
 =end
 %>
 
-
 <style>
  input[type="radio"] {
   display:none; 
 }
 </style>
+
+<script>
+    $('.upfile').on('click', function(){
+      $fileField = $('.upfile')
+      // 選択された画像を取得し表示
+      $($fileField).on('change', $fileField, function(e) {
+        file = e.target.files[0]
+        reader = new FileReader(),
+        $preview = $(".filefield");
+        console.log(file)
+        reader.onload = (function(file) {
+          return function(e) {
+            $preview.empty();
+            $preview.append($('<img>').attr({
+              src: e.target.result,
+              width: "100%",
+              title: file.name,
+              class: 'w-100 event-img text-center mb-2'
+            }));
+          };
+        })(file);
+        reader.readAsDataURL(file);
+    })
+  });
+</script>

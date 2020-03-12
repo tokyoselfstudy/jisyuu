@@ -12,7 +12,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    params[:user][:birthdate] = create_birthdate_params
     super
   end
 
@@ -23,6 +22,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
+    params[:user][:birthdate] = create_birthdate_params
     super
   end
 
@@ -50,12 +50,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:family_name, :first_name, :family_name_kana, :first_name_kana, :pref_id, :users_category_id, :users_job_category_id, :gender, :birthdate, :studying, :introduction])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:family_name, :first_name, :family_name_kana, :first_name_kana, :pref_id, :users_category_id, :users_job_category_id, :gender, :birthdate, :studying, :introduction, :avatar])
   end
 
   def create_birthdate_params
     date = params[:user]
-    Date.new date["birthdate(1i)"].to_i,date["birthdate(2i)"].to_i,date["birthdate(3i)"].to_i
+    Date.new date["birthdate(1i)"].to_i, date["birthdate(2i)"].to_i, date["birthdate(3i)"].to_i
+  end
+
+  # deviseのupdate_resourceをオーバーライドしてパスワードなしで更新を許可する
+  def update_resource(resource, params)
+    resource.update_without_password(params)
   end
 
   # The path used after sign up.

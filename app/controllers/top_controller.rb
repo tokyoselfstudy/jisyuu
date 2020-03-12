@@ -1,4 +1,22 @@
+# frozen_string_literal: true
+
 class TopController < ApplicationController
+  before_action :authenticate_user!, only: [:menu, :manager_menu]
+  before_action :is_manager?, only: [:manager_menu]
+
   def index
+      @events = Event
+                  .where(is_deleted: false)
+                  .where("event_date > ?", Time.zone.now)
+                  .order(:event_date)
+                  .page(params[:page])
+                  .per(10)
+  end
+
+  def menu
+  end
+
+  def manager_menu
+    @event = Event.find(params[:event_id])
   end
 end

@@ -1,0 +1,64 @@
+<div style="margin-bottom: 100px;">
+  <section class="container col-md-8 col-lg-6">
+    <h1 style="font-size:20px;font-weight: bold;" class="m-0 pb-1 pt-3">
+      <%= @event.title %>
+    </h1>
+  </section>
+  <section class="container col-md-8 col-lg-6 p-0">
+    <figure class="m-0">
+      <%= image_tag(@event.image.variant(resize: "1000x300"), class: 'w-100 event-img', alt: @event.title.presence || 'イベントの画像') %>
+    </figure>
+    <div class="d-flex mt-2 ml-3">
+      <%= image_tag(@event.user.avatar.variant(resize: "100x100"), class: 'rounded-circle user-circle-image') if @event.user.avatar.attached? %>
+      <div class="ml-3">
+        <p class="mb-0">ファシリテーター</p>
+        <p class="font-weight-bold"><%= @event.user.view_full_name %></p>
+      </div>
+    </div>
+  </section>
+  <section class="event-content-block">
+    <div class="container col-md-8 col-lg-6">
+      <h2 class="h2-event mt-4"><i class="fas fa-clock fa-fw fa-lg icon-color"></i>開催日時</h2>
+      <p style="margin-left: 30px;"><%= @event.event_date_shape %>~<%= @event.event_end_date_shape %></p>
+      <div class="d-flex mt-4">
+        <h2 class="h2-event"><i class="fas fa-map-marker-alt fa-lg fa-fw icon-color"></i>場所:</h2>
+        <p class="ml-3 mb-0"><%= @event.place_name.presence || '' %></p>
+      </div>
+      <p style="margin-left: 30px;"><%= text_url_to_link(hbr(@event.place_address.presence || '')).html_safe %></p>
+    </div>
+  </section>
+  <section class="event-content-block">
+    <div class="container col-md-8 col-lg-6">
+      <h2 class="h2-event mt-4"><i class="fas fa-users fa-fw fa-lg icon-color"></i>&nbsp;イベント詳細</h2>
+      <p><%= text_url_to_link(hbr(@event.detail)).html_safe %></p>
+    </div>
+  </section>
+  <section class="event-content-block">
+    <div class="container col-md-8 col-lg-6">
+      <div class="d-flex justify-content-between">
+        <h2 class="h2-event mt-4"><i class="fas fa-users fa-fw fa-lg icon-color"></i>&nbsp;参加人数</h2>
+        <p class="mt-4 font-weight-bold" style="font-size: 18px;"><span style="color: red;"><%= @event.participate_count %></span>/<%= @event.num_of_applicant %></p>
+      </div>
+      <% if user_signed_in? && current_user.is_manager? && @event.participants_users.present? %>
+        <p>⚠︎管理人にのみ表示されています</p>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th style="width: 33%;">参加日時</th>
+              <th style="width: 40%;">ユーザー名</th>
+              <th style="width: 27%;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @event.participants_users.each do |participants_user| %>
+              <tr style="height: 75px;">
+                <td><%= datetime_disp(participants_user.created_at) %></td>
+                <td><%= link_to(participants_user.view_full_name, user_path(participants_user)) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </section>
+</div>

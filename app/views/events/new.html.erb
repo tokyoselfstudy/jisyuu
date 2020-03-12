@@ -1,0 +1,11 @@
+<div class="mt-5 main" style="margin-bottom: 100px;">
+  <div class="container col-lg-5 col-md-5">
+    <div class="signup-form ">
+      <h1 class="devise-title mb-4">イベント作成</h1>
+      <div clas="d-flex justify-content-end">
+        <%= link_to "過去イベントから作る", copy_events_user_path(current_user), class: 'signup-button d-inline-block mb-4 text-decoration-none' %>
+      </div>
+      <%= render 'events/form' %>
+    </div>
+  </div>
+</div>

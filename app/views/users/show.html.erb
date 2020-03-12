@@ -1,0 +1,41 @@
+<div class="main mt-5">
+  <div class="container col-lg-5 col-md-5">
+    <div class="profile-block pb-3">
+      <div class="d-flex justify-content-between">
+        <%= image_tag(@user.avatar.variant(resize: "100x100"), class: 'rounded') if @user.avatar.attached? %>
+        <a class="text-decoration-none p-2 border border-danger h-25 rounded-pill" href="/menu" style="color: #DC564F;">メニュー</a>
+      </div>
+      <p class="mt-4 mb-0 font-weight-bold">氏名: <%= @user.view_full_name %></p>
+      <p class="font-weight-bold" style="color:gray;">学習している事: <%= @user.studying %></p>
+      <p style="word-wrap: break-word;"><%= @user.introduction.present? ? @user.introduction : 'プロフィール文未設定' %></p>
+      <a class="sign-up-btn text-center" style="width: 100%;display: block" href="/users/edit">プロフィールを編集する</a>
+    </div>
+  </div>
+</div>
+
+<div class="container col-lg-5 col-md-5">
+  <ul id="myTabs" class="nav">
+    <li role="presentation" class="active tab-layout tab-active"><a href="#home"  aria-controls="home" role="tab" data-toggle="tab" class="nav-link tab-font-color">参加予定イベント</a></li>
+    <li role="presentation" class="tab-layout "><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" class="nav-link tab-font-color">過去イベント</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active fade show" id="home">
+      <% @upcoming_events.each do |event| %>
+        <%= render 'events/event_box', event: event %>
+      <% end %>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="profile">
+      <% @past_events.each do |event| %>
+        <%= render 'events/event_box', event: event %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script>
+  $('.tab-layout').on('click', function () {
+    $('.tab-layout').removeClass('tab-active')
+    $(this).addClass('tab-active')
+  })
+</script>

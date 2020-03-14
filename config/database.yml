@@ -49,6 +49,7 @@ test:
 #
 production:
   <<: *default
-  database: jisyuu_production
-  username: jisyuu
-  password: <%= ENV['JISYUU_DATABASE_PASSWORD'] %>
+  database: jisyuu-production
+  username: <%= ENV['DATABASE_USER_NAME_PRODUCTION'] %>
+  password: <%= ENV['DATABASE_PASSWORD_PRODUCTION'] %>
+  host: <%= ENV['DATABASE_HOST_PRODUCTION'] %>

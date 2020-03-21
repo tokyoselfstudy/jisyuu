@@ -10,7 +10,7 @@ class TopController < ApplicationController
                   .where("event_date > ?", Time.zone.now)
                   .order(:event_date)
                   .page(params[:page])
-                  .per(10)
+                  .per(5)
   end
 
   def menu

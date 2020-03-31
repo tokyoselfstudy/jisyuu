@@ -7,7 +7,7 @@
       </div>
       <p class="mt-4 mb-0 font-weight-bold">氏名: <%= @user.view_full_name %></p>
       <p class="font-weight-bold" style="color:gray;">学習している事: <%= @user.studying %></p>
-      <p style="word-wrap: break-word;"><%= @user.introduction.present? ? @user.introduction : 'プロフィール文未設定' %></p>
+      <p style="word-wrap: break-word;"><%= @user.introduction.present? ? hbr(@user.introduction).html_safe : 'プロフィール文未設定' %></p>
       <a class="sign-up-btn text-center" style="width: 100%;display: block" href="/users/edit">プロフィールを編集する</a>
     </div>
   </div>

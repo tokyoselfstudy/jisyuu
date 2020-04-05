@@ -46,11 +46,11 @@
       </div>
       <div class="row">
         <div class="col-sm-12 btn-group mb-4" data-toggle="buttons">
-          <label class="btn btn-outline-secondary" style="width:50%">
-            <%= f.radio_button :gender, 'male', {checked: current_user.gender == nil || current_user.gender == "male"} %> 男性
+          <label class="btn btn-outline-secondary <%= gender_active_controll(current_user.gender, "male") %>" style="width:50%">
+            <%= f.radio_button :gender, 'male', {} %> 男性
           </label>
-          <label class="btn btn-outline-secondary" style="width:50%">
-            <%= f.radio_button :gender, 'female', {checked: current_user.gender == "female"} %> 女性
+          <label class="btn btn-outline-secondary <%= gender_active_controll(current_user.gender, "female") %>" style="width:50%">
+            <%= f.radio_button :gender, 'female', {} %> 女性
           </label>
         </div>
       </div>

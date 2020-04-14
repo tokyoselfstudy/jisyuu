@@ -24,6 +24,10 @@ class User < ApplicationRecord
     end
   end
 
+  def display_priority_nickname
+    self.nickname.present? ? self.nickname : self.view_full_name
+  end
+
   def view_full_name
     "#{self&.family_name} #{self&.first_name}"
   end

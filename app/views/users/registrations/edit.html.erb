@@ -41,6 +41,11 @@
         </div>
       </div>
 
+      <div class="field mb-4">
+        <%= f.label 'ニックネーム' %><span style="font-size:10px;" class="ml-2 badge badge-success">設定がある場合優先表示されます</span><br />
+        <%= f.text_field :nickname, autofocus: true, class: 'form-control' %>
+      </div>
+
       <div class="field">
         <%= f.label :gender, '性別', {class: 'form-label'} %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span>
       </div>
@@ -62,7 +67,7 @@
         <%= f.date_select :birthdate, {
           use_month_numbers: true,
           start_year: 1930,
-          end_year:   (Time.zone.now.year - 15),
+          end_year: (Time.zone.now.year - 15),
           date_separator: ' / ',
         },
         { class: 'form-control', style: 'width: 30%; display: inline-block;'}
@@ -152,7 +157,6 @@
         file = e.target.files[0]
         reader = new FileReader(),
         $preview = $(".filefield");
-        console.log(file)
         reader.onload = (function(file) {
           return function(e) {
             $preview.empty();

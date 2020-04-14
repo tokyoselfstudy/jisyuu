@@ -8,8 +8,9 @@ class RoomsController < ApplicationController
     entry_rooms_ids = Entry
                         .with_event
                         .where(user_id: current_user.id, is_deleted: false)
+                        .where('events.event_date > ?', Time.zone.now - 7.days)
                         .where.not(event_id: nil)
-                        .order('events.event_date')
+                        .order('events.event_date DESC')
                         .pluck(:room_id)
 
     @event_rooms = Room.eager_load(:event)

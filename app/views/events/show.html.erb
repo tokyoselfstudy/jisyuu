@@ -12,7 +12,7 @@
       <%= image_tag(@event.user.avatar.variant(resize: "100x100"), class: 'rounded-circle user-circle-image') if @event.user.avatar.attached? %>
       <div class="ml-3">
         <p class="mb-0">ファシリテーター</p>
-        <p class="font-weight-bold"><%= @event.user.view_full_name %></p>
+        <p class="font-weight-bold"><%= @event.user.display_priority_nickname %></p>
       </div>
     </div>
   </section>

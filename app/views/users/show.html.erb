@@ -5,7 +5,7 @@
         <%= image_tag(@user.avatar.variant(resize: "100x100"), class: 'rounded') if @user.avatar.attached? %>
         <a class="text-decoration-none p-2 border border-danger h-25 rounded-pill" href="/menu" style="color: #DC564F;">メニュー</a>
       </div>
-      <p class="mt-4 mb-0 font-weight-bold">氏名: <%= @user.view_full_name %></p>
+      <p class="mt-4 mb-0 font-weight-bold">氏名: <%= @user.display_priority_nickname %></p>
       <p class="font-weight-bold" style="color:gray;">学習している事: <%= @user.studying %></p>
       <p style="word-wrap: break-word;"><%= @user.introduction.present? ? hbr(@user.introduction).html_safe : 'プロフィール文未設定' %></p>
       <a class="sign-up-btn text-center" style="width: 100%;display: block" href="/users/edit">プロフィールを編集する</a>

@@ -6,7 +6,7 @@
           <div class="faceicon">
             <%= image_tag(message.sender.avatar.variant(resize: "100x100"), class: 'user-circle-image rounded-circle') if message&.sender.present? && message.sender.avatar.attached? %>
           </div>
-        <p class="message-username"><%= message&.sender.present? ? message.sender.view_full_name : "" %></p>
+        <p class="message-username"><%= message&.sender&.nickname.present? ? message&.sender&.nickname : message&.sender&.view_full_name %></p>
           <div class="chatting">
             <div class="says col-10 mr-auto">
               <p><%= text_url_to_link(hbr(message.body)).html_safe %></p>

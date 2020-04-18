@@ -6,6 +6,14 @@ $main-color: #DC564F;
   box-sizing: border-box
 }
 
+@media (max-width: 767px) {
+  h1.learn-title {
+    font-size: 20px!important;
+  }
+  h2.lecord-title {
+    font-size: 20px!important;
+  }
+}
 html {
   height: 100%;
 }
@@ -94,6 +102,13 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.line-2 {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .padding-bottom-100 {
@@ -302,6 +317,7 @@ body {
 .mycomment {
   margin: 0 0;
 }
+
 .mycomment p {
   display: inline-block;
   position: relative; 
@@ -342,4 +358,61 @@ body {
   margin: 0 0 4px 60px;
   text-align: left;
   color: #686b68;
+}
+
+// 学習記録
+.trix-content {  
+  font-size: 16px;
+  line-height: 26px;
+  color: #111111;
+  min-height: 20em;
+}
+
+.trix-content h1 {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  font-size: 1.6em;
+  font-weight: bold;
+  line-height: 1.2;
+  padding: 10px;
+  margin: 0;
+}
+
+.learn-title {
+  font-size: 30px;
+  line-height: 1.4;
+  font-weight: bold;
+}
+
+// 学習記録の記事
+.learn-record-list {
+	display: flex;
+	margin-bottom: 20px;
+	padding: 20px;
+	border-radius: 5px;
+	box-sizing: border-box;
+	box-shadow: 0 0 5px #999;
+}
+
+.learn-record-figure {
+  margin-right: 20px;
+  margin-bottom: 0px;
+  width: 100px;
+  height: 100px;
+}
+
+.text_content {
+  width: 100%;
+  height: 100px;
+}
+
+.img-article {
+  min-width: 100px;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.lecord-title {
+  font-size: 24px;
+  color: black;
 }

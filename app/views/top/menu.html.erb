@@ -11,6 +11,8 @@
           <li class="border-bottom p-4"><i class="fas fa-pencil-alt icon-color mr-2"></i></i><%= link_to 'イベント作成', new_event_path, class: 'text-body text-decoration-none' %></li>
           <li class="border-bottom p-4"><i class="fas fa-flag icon-color mr-2"></i><%= link_to 'イベント管理', events_user_path(current_user), class: 'text-body text-decoration-none' %></li>
         <% end %>
+        <li class="border-bottom p-4"><i class="fas fa-list-alt icon-color mr-2"></i><%= link_to '学習記録一覧', learn_records_path, class: 'text-body text-decoration-none' %></li>
+        <li class="border-bottom p-4"><i class="fas fa-pencil-alt icon-color mr-2"></i><%= link_to '学習記録登録', new_learn_record_path, class: 'text-body text-decoration-none' %></li>
         <li class="border-bottom p-4"><i class="fas fa-user icon-color mr-2"></i><%= link_to 'プロフィール編集', edit_user_registration_path, class: 'text-body text-decoration-none' %></li>
         <li class="border-bottom p-4"><i class="fas fa-sign-out-alt mr-2 icon-color"></i><%= link_to 'ログアウト', destroy_user_session_path, class: 'text-body text-decoration-none', method: :delete, data: {confirm: "ログアウトしてよろしいですか？"} %></li>
         <li class="p-4"><i class="fa fa-times mr-2 icon-color"></i>	<%= link_to '退会', user_registration_path, class: 'text-body text-decoration-none', method: :delete, data: {confirm: "退会してよろしいですか？"} %></li>

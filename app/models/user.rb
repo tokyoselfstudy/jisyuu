@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
   has_many :events
   has_many :events_users
+  has_many :learn_records
 
   def avatar_presence
     if avatar.attached?

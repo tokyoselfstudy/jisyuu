@@ -19,6 +19,7 @@ require("jquery")
 
 import 'bootstrap';
 import '../stylesheets/application';
+import '../stylesheets/actiontext';
 import '@fortawesome/fontawesome-free/js/all';
 
 
@@ -32,3 +33,6 @@ $(function() {
   $("#hoge").css("color","green")
   console.log($.fn.jquery)
 });
+
+require("trix")
+require("@rails/actiontext")

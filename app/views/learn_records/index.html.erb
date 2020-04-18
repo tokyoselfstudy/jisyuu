@@ -1,0 +1,16 @@
+<div class="padding-bottom-100">
+  <div class="container col-md-8 col-lg-6">
+  <h1 class="mt-4 mb-4 font-weight-bold" style="font-size:32px;"><i class="fas fa-list-alt icon-color mr-2"></i>学習記録一覧</h1>
+  <%= render @learn_records %>
+  </div>
+</div>
+
+<script>
+  $('.learn-record-menu').on('click', function(e){
+    e.preventDefault();
+    var learn_record_id;
+    console.log(learn_record_id)
+    learn_record_id = $(this).data('learn_record_id')
+    window.location.href = `/learn_records/${learn_record_id}/menu`
+  })
+</script>

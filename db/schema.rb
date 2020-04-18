@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_14_124245) do
+ActiveRecord::Schema.define(version: 2020_04_16_030343) do
+
+  create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body", size: :long
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -73,6 +83,22 @@ ActiveRecord::Schema.define(version: 2020_04_14_124245) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "learn_records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "title", default: "", null: false, comment: "タイトル"
+    t.integer "user_id", comment: "user.id"
+    t.integer "event_id", comment: "event.id"
+    t.integer "study_category_id", comment: "study_category.id"
+    t.boolean "is_published", default: true, comment: "公開フラグ"
+    t.boolean "is_deleted", default: false, comment: "削除フラグ"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_learn_records_on_event_id"
+    t.index ["is_deleted"], name: "index_learn_records_on_is_deleted"
+    t.index ["is_published"], name: "index_learn_records_on_is_published"
+    t.index ["study_category_id"], name: "index_learn_records_on_study_category_id"
+    t.index ["user_id"], name: "index_learn_records_on_user_id"
+  end
+
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "room_id", null: false, comment: "room.id"
     t.integer "sender_id", null: false, comment: "メッセージを送ったユーザーID"
@@ -94,6 +120,12 @@ ActiveRecord::Schema.define(version: 2020_04_14_124245) do
   create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "event_id", comment: "event.id"
     t.boolean "is_deleted", default: false, null: false, comment: "削除フラグ true: 削除済み false: デフォルト"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "study_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

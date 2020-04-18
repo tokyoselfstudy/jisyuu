@@ -1,0 +1,21 @@
+<%= link_to(learn_record_path(learn_record), class: 'text-decoration-none') do %>
+  <article class="learn-record-list">
+    <figure class="learn-record-figure">
+      <% if learn_record.thumbnail.attached? %>
+        <%= image_tag(learn_record.thumbnail.variant(resize_to_fill: [100, 100],crop:("100x100+0+0")), class: "img-article") %>
+      <% else %>
+        <%= image_tag(learn_record.user.avatar.variant(resize_to_fill: [100, 100],crop:("100x100+0+0")), class: "img-article") %>
+      <% end %>
+    </figure>
+    <div class="text_content">
+      <div class="d-flex justify-content-between">
+        <p class="mb-1 black-color"><time datetime="<%= datetime_disp(learn_record.created_at) %>"><%= datetime_disp(learn_record.created_at) %></time></p>
+        <% if user_signed_in? && is_same_user?(current_user.id, learn_record.user_id) %>
+          <span class="ml-3 learn-record-menu" data-learn_record_id=<%= learn_record.id %>><i style="color: #B7B7B7;" class="fa fa-ellipsis-v"></i></span>
+        <% end %>
+      </div>
+      <h2 class="text-decoration-none lecord-title"><%= learn_record.title %></h2>
+      <p class="line-2" style="color: #666666;font-size:13px;"><%= strip_tags(learn_record.content.to_s)%></p>
+    </div>
+  </article>
+<% end %>

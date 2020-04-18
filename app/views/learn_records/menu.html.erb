@@ -1,0 +1,11 @@
+<div class="container col-md-8 col-lg-6">
+  <h1 class="p-2" style="font-size: 20px;font-weight: bold;">学習記録メニュー</h1>
+</div>
+<section class="event-content-block">
+  <div class="container col-md-8 col-lg-6">
+    <ul class="list-unstyled">
+      <li class="border-bottom p-4"><i class="fas fa-pencil-alt icon-color mr-2"></i></i><%= link_to '学習記録編集', edit_learn_record_path(@learn_record), class: 'text-body text-decoration-none' %></li>
+      <li class="p-4 border-bottom"><i class="fas fa-flag icon-color mr-2"></i><%= link_to 'イベント削除', learn_record_path(@learn_record), class: 'text-body text-decoration-none', method: :delete, data: { confirm: '学習記録を削除します。よろしいですか？'} %></li>
+    </ul>
+  </div>
+</section>

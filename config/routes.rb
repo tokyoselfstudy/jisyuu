@@ -25,6 +25,11 @@ Rails.application.routes.draw do
   resources :events_users, only: [:create, :destroy]
   resources :rooms, only: [:index, :show]
   resources :messages, only: [:create, :destroy]
+  resources :learn_records do
+    member do 
+     get 'menu'
+    end
+  end
 
   namespace :admin do
     resources :users

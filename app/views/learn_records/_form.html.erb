@@ -9,12 +9,14 @@
           <%= f.text_field :title, class: "form-control" %>
         </div>
       </div>
-      <div class="col-4 pl-0">
-        <div class="field mb-4">
-          <%= f.label 'カテゴリ', class: 'font-weight-bold' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span><br />
-          <%= f.collection_select(:study_category_id, StudyCategory.all, :id, :name, { }, class: 'form-control') %>
+      <% unless f.object.class == Blog %>
+        <div class="col-4 pl-0">
+          <div class="field mb-4">
+            <%= f.label 'カテゴリ', class: 'font-weight-bold' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span><br />
+            <%= f.collection_select(:study_category_id, StudyCategory.all, :id, :name, { }, class: 'form-control') %>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
 
     <div class="mb-3">

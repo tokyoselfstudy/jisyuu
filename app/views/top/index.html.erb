@@ -7,10 +7,19 @@
   <section>
     <div class="container col-md-8 col-lg-6">
       <div class="">
-        <h1 style="font-size: 24px;" class="mt-4 mb-4"><span><i class="fas fa-flag icon-color mr-2"></i></span>開催イベント一覧</h1>
+        <h1 style="font-size: 24px;" class="mt-4 mb-4 font-weight-bold"><span><i class="fas fa-flag icon-color mr-2"></i></span>開催イベント一覧</h1>
         <%= render partial: 'events/event_box', collection: @events, as: 'event' %>
-        <%= paginate(@events) %>
+        <%= link_to 'イベント一覧を見る', events_path, class: 'to_index-btn text-center mx-auto' %>
       </div>
+    </div>
+  </section>
+  <section>
+    <div class="container col-md-8 col-lg-6">
+      <div class="">
+        <h2 style="font-size: 24px;" class="mt-4 mb-4 font-weight-bold"><span><i class="fas fa-list-alt icon-color mr-2"></i></span>オフィシャルブログ</h1>
+        <%= render partial: 'blogs/blog', collection: @blogs, as: 'blog' %>
+      </div>
+      <%= link_to 'ブログ一覧を見る', blogs_path, class: 'to_index-btn text-center mx-auto' %>
     </div>
   </section>
 </div>

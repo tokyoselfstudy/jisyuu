@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'blogs/index'
+  get 'blogs/show'
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   
   devise_for :users, controllers: {
@@ -30,6 +32,7 @@ Rails.application.routes.draw do
      get 'menu'
     end
   end
+  resources :blogs
 
   namespace :admin do
     resources :users

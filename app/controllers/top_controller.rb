@@ -9,8 +9,8 @@ class TopController < ApplicationController
                   .where(is_deleted: false)
                   .where("event_date > ?", Time.zone.now)
                   .order(:event_date)
-                  .page(params[:page])
-                  .per(5)
+                  .limit(5)
+      @blogs = Blog.blogs_index.order(:created_at).limit(3)
   end
 
   def menu

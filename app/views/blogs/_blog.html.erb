@@ -1,0 +1,14 @@
+<%= link_to(blog_path(blog), class: 'text-decoration-none') do %>
+  <article class="learn-record-list">
+    <figure class="learn-record-figure">
+      <%= image_tag(blog.thumbnail.variant(resize_to_fill: [100, 100],crop:("100x100+0+0")), class: "img-article") %>
+    </figure>
+    <div class="text_content">
+      <div class="d-flex justify-content-between">
+        <p class="mb-1 black-color"><time datetime="<%= datetime_disp(blog.created_at) %>"><%= datetime_disp(blog.created_at) %></time></p>
+      </div>
+      <h2 class="text-decoration-none lecord-title"><%= blog.title %></h2>
+      <p class="line-2" style="color: #666666;font-size:13px;"><%= strip_tags(blog.content.to_s)%></p>
+    </div>
+  </article>
+<% end %>

@@ -5,6 +5,15 @@ class EventsController < ApplicationController
   before_action :create_event_date_params, only: [:create, :update]
   before_action :create_event_end_date_params, only: [:create, :update]
 
+  def index
+    @events = Event
+                  .where(is_deleted: false)
+                  .where("event_date > ?", Time.zone.now)
+                  .order(:event_date)
+                  .page(params[:page])
+                  .per(8)
+  end
+
   def new
     @event = current_user.events.build
   end

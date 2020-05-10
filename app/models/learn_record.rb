@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LearnRecord < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true

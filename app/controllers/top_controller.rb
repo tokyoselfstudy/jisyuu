@@ -10,7 +10,7 @@ class TopController < ApplicationController
                 .where("event_date > ?", Time.zone.now)
                 .order(:event_date)
                 .limit(5)
-    @blogs = Blog.blogs_index.order(:created_at).limit(3)
+    @blogs = Blog.blogs_index.order(created_at: :desc).limit(3)
   end
 
   def menu

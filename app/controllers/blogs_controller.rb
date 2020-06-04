@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BlogsController < ApplicationController
   include AdminConcern
   before_action :is_admin_user?, only: [:new, :create, :edit, :update, :destroy]
@@ -19,10 +21,10 @@ class BlogsController < ApplicationController
   def create
     @blog = Blog.new(blog_params)
     if @blog.save
-      flash[:notice] = 'ブログの作成に成功しました。'
+      flash[:notice] = "ブログの作成に成功しました。"
       redirect_to blog_path(@blog)
     else
-      flash[:danger] = 'ブログの作成に失敗しました。'
+      flash[:danger] = "ブログの作成に失敗しました。"
       render :new
     end
   end
@@ -34,10 +36,10 @@ class BlogsController < ApplicationController
   def update
     @blog = Blog.find(params[:id])
     if @blog.update_attributes(blog_params)
-      flash[:notice] = 'ブログの更新に成功しました。'
+      flash[:notice] = "ブログの更新に成功しました。"
       redirect_to blog_path(@blog)
     else
-      flash[:danger] = 'ブログの更新に失敗しました。'
+      flash[:danger] = "ブログの更新に失敗しました。"
       render :edit
     end
   end
@@ -46,10 +48,10 @@ class BlogsController < ApplicationController
     @blog = Blog.find(params[:id])
     @blog.is_deleted = true
     if @blog.save
-      flash[:notice] = 'ブログの削除に成功しました。'
+      flash[:notice] = "ブログの削除に成功しました。"
       redirect_to menu_path
     else
-      flash[:danger] = 'ブログの削除に失敗しました。'
+      flash[:danger] = "ブログの削除に失敗しました。"
       render :new
     end
   end

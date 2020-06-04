@@ -5,12 +5,12 @@ class TopController < ApplicationController
   before_action :is_manager?, only: [:manager_menu]
 
   def index
-      @events = Event
-                  .where(is_deleted: false)
-                  .where("event_date > ?", Time.zone.now)
-                  .order(:event_date)
-                  .limit(5)
-      @blogs = Blog.blogs_index.order(:created_at).limit(3)
+    @events = Event
+                .where(is_deleted: false)
+                .where("event_date > ?", Time.zone.now)
+                .order(:event_date)
+                .limit(5)
+    @blogs = Blog.blogs_index.order(created_at: :desc).limit(3)
   end
 
   def menu

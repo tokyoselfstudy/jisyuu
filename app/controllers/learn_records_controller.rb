@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class LearnRecordsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :new, :create, :edit, :update, :destroy, :menu]
   before_action :correct_user?, only: [:edit, :update, :destroy, :menu]
-  
+
   def index
     @learn_records = LearnRecord.user_learn_records(current_user.id).order(created_at: :desc)
   end
@@ -17,10 +19,10 @@ class LearnRecordsController < ApplicationController
   def create
     @learn_record = current_user.learn_records.build(learn_record_params)
     if @learn_record.save
-      flash[:notice] = '勉強ノートの作成に成功しました。'
+      flash[:notice] = "勉強ノートの作成に成功しました。"
       redirect_to learn_record_path(@learn_record)
     else
-      flash[:danger] = '勉強ノートの作成に失敗しました。'
+      flash[:danger] = "勉強ノートの作成に失敗しました。"
       render :new
     end
   end
@@ -30,10 +32,10 @@ class LearnRecordsController < ApplicationController
 
   def update
     if @learn_record.update_attributes(learn_record_params)
-      flash[:notice] = '勉強ノートの更新に成功しました。'
+      flash[:notice] = "勉強ノートの更新に成功しました。"
       redirect_to learn_record_path(@learn_record)
     else
-      flash[:danger] = '勉強ノートの更新に失敗しました。'
+      flash[:danger] = "勉強ノートの更新に失敗しました。"
       render :edit
     end
   end
@@ -41,10 +43,10 @@ class LearnRecordsController < ApplicationController
   def destroy
     @learn_record.is_deleted = true
     if @learn_record.save
-      flash[:notice] = '勉強ノートの削除に成功しました。'
+      flash[:notice] = "勉強ノートの削除に成功しました。"
       redirect_to learn_records_path
     else
-      flash[:danger] = '勉強ノートの削除に失敗しました。'
+      flash[:danger] = "勉強ノートの削除に失敗しました。"
       render :index
     end
   end

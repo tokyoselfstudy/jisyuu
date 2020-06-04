@@ -19,12 +19,12 @@ class Event < ApplicationRecord
   scope :with_events_user, -> { joins(:events_users) }
   scope :upcoming_events, -> (user_id) do
     return where(nil) if user_id.blank?
-    with_events_user.merge(EventsUser.where(user_id: user_id)).where("event_date > ?", Time.zone.now).order('events.event_date')
+    with_events_user.merge(EventsUser.where(user_id: user_id)).where("event_date > ?", Time.zone.now).order("events.event_date")
   end
 
   scope :past_events, -> (user_id) do
     return where(nil) if user_id.blank?
-    with_events_user.merge(EventsUser.where(user_id: user_id)).where("event_date < ?", Time.zone.now).order('events.event_date DESC')
+    with_events_user.merge(EventsUser.where(user_id: user_id)).where("event_date < ?", Time.zone.now).order("events.event_date DESC")
   end
 
   def image_presence

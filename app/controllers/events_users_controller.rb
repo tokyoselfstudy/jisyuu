@@ -66,7 +66,7 @@ class EventsUsersController < ApplicationController
 
     def is_required_user_information_entered?
       if current_user.family_name.blank? || current_user.first_name.blank? || current_user.family_name_kana.blank?  || current_user.first_name_kana.blank?  || current_user.gender.blank?  || current_user.birthdate.blank?  || !current_user.avatar.attached?  || current_user.pref_id.blank?  || current_user.users_category_id.blank?  || current_user.studying.blank?  || current_user.users_job_category_id.blank?  || current_user.introduction.blank?
-         return redirect_to edit_user_registration_path, alert: 'イベントに参加するためには必須情報をご入力ください' 
+        redirect_to edit_user_registration_path, alert: "イベントに参加するためには必須情報をご入力ください"
       end
     end
 end

@@ -8,14 +8,14 @@ class RoomsController < ApplicationController
     entry_rooms_ids = Entry
                         .with_event
                         .where(user_id: current_user.id, is_deleted: false)
-                        .where('events.event_date > ?', Time.zone.now - 7.days)
+                        .where("events.event_date > ?", Time.zone.now - 7.days)
                         .where.not(event_id: nil)
-                        .order('events.event_date DESC')
+                        .order("events.event_date DESC")
                         .pluck(:room_id)
 
     @event_rooms = Room.eager_load(:event)
                        .where(id: entry_rooms_ids)
-                       .order(['field(rooms.id, ?)', entry_rooms_ids])
+                       .order(["field(rooms.id, ?)", entry_rooms_ids])
   end
 
   def show
@@ -33,7 +33,7 @@ class RoomsController < ApplicationController
       .where(message_id: @room.messages
       .pluck(:id), receiver_id: current_user.id, is_deleted: false, read_status: false)
       .update_all(read_status: true)
-    render layout: 'message'
+    render layout: "message"
   end
 
   private

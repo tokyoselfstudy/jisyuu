@@ -17,7 +17,7 @@ module ApplicationHelper
   end
 
   def datetime_disp(datetime)
-    datetime.present? ? datetime.strftime("%Y/%m/%d#{datetime.strftime("(#{%w[日 月 火 水 木 金 土][datetime.wday]})")} %H:%M") : ''
+    datetime.present? ? datetime.strftime("%Y/%m/%d#{datetime.strftime("(#{%w[日 月 火 水 木 金 土][datetime.wday]})")} %H:%M") : ""
   end
 
   # 入力された文字列のセキュリティを担保し改行があればbrタグを入れる

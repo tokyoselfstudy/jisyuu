@@ -12,6 +12,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :fee, '参加費', class: 'font-weight-bold mb-2' %>
+    <%= f.text_field :fee, autofocus: true, class: 'form-control mb-2' %>
+  </div>
+
+  <div class="field">
     <%= f.label :event_date, 'イベント開催日', class: 'font-weight-bold mb-2' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span>
   </div>
   <div class="mb-4 ">

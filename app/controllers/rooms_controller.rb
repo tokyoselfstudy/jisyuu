@@ -23,10 +23,6 @@ class RoomsController < ApplicationController
     @messages = @room.messages.eager_load(:messages_receivers, :sender)
                               .where(is_deleted: false)
                               .order(:created_at)
-    @read_count_hash = MessagesReceiver
-                        .where(message_id: @messages.pluck(:id), read_status: true)
-                        .group(:message_id)
-                        .count
     @new_message = Message.new
     # 現在のユーザーのMessagesReceiverのレコードを更新する
     MessagesReceiver

@@ -20,6 +20,7 @@ require("jquery")
 import 'bootstrap';
 import '../stylesheets/application';
 import '../stylesheets/actiontext';
+import '../javascript/message';
 import '@fortawesome/fontawesome-free/js/all';
 
 
@@ -27,12 +28,6 @@ import '@fortawesome/fontawesome-free/js/all';
 // $(window).on('load', function(){
 //   $('#exampleModal').modal('show');
 // });
-
-
-$(function() {
-  $("#hoge").css("color","green")
-  console.log($.fn.jquery)
-});
 
 require("trix")
 require("@rails/actiontext")

@@ -34,6 +34,12 @@ Rails.application.routes.draw do
   end
   resources :blogs
 
+  namespace :api do
+    resources :messages, only: :index, defaults: { format: 'json' } do
+      get :read_count, on: :collection
+    end
+  end
+
   namespace :admin do
     resources :users
   end

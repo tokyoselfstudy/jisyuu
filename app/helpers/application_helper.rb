@@ -22,8 +22,7 @@ module ApplicationHelper
 
   # 入力された文字列のセキュリティを担保し改行があればbrタグを入れる
   def hbr(text)
-    text = html_escape(text)
-    text.gsub(/\r\n|\r|\n/, "<br />")
+    html_escape(text).gsub(/\r\n|\r|\n/, "<br />")
   end
 
   # uriを含む文字列であれば、aタグに置き換える

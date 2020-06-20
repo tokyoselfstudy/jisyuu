@@ -1,6 +1,6 @@
-  <div class="container col-md-8 col-lg-6" style="min-height: 100%;background:#e1ebf3;padding-bottom: 66px;">
+  <div class="container col-md-8 col-lg-6 room" style="min-height: 100%;background:#e1ebf3;padding-bottom: 66px;" data-room-id="<%= params[:id] %>">
     <% @messages.each do |message| %>
-      <div class="line-bc m-0">
+      <div class="line-bc m-0 message-body" data-message-id="<%= message.id %>">
         <% unless is_same_user?(current_user.id, message&.sender&.id) %>
         <div class="balloon6">
           <div class="faceicon">
@@ -17,18 +17,8 @@
         <div class="col-10 ml-auto mycomment">
           <p><%= text_url_to_link(hbr(message.body)).html_safe %></p>
         </div>
-          <% if @read_count_hash[message.id].present? %>
-            <p class="mb-0 read-status-string">既読<%= @read_count_hash[message.id] %></p>
-          <% end %>
+          <p class="mb-0 read-status-string <%= "message#{message.id}-status"%>"></p>
         <% end %>
       </div>
     <% end %>
   </div>
-
-<script>
-$(document).ready( function(){
-  var element = document.documentElement;
-  var bottom = element.scrollHeight - element.clientHeight;
-  window.scroll(0, bottom);
-});
-</script>

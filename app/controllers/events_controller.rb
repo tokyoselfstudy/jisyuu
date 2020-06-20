@@ -21,6 +21,10 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @events_user = EventsUser.where(event_id: @event.id, user_id: current_user.id).first if user_signed_in?
+
+    @meta_title = @event.title
+    @meta_url = "https://www.tokyoselfstudy.com/events/#{@event.id}"
+    @meta_description = @event.detail
   end
 
   def create

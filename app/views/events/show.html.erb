@@ -16,8 +16,8 @@
           <p class="font-weight-bold"><%= @event.user.display_priority_nickname %></p>
         </div>
       </div>
-      <div class="twitter d-flex align-items-center mr-3">
-        <a href="//twitter.com/share" class="twitter-share-button" data-text="[<%= @event.event_date_shape %>~]東京自習会イベント--<%= @event.title %>" data-url="https://www.tokyoselfstudy.com/<%= @event.id %>" data-lang="ja">
+      <div class="twitter d-flex align-items-center">
+        <a href="//twitter.com/share" class="twitter-share-button" data-text="一緒にイベントへ参加しよう！[<%= @event.event_date_shape %>~]東京自習会イベント-<%= @event.title %>" data-url="https://www.tokyoselfstudy.com/events/<%= @event.id %>" data-lang="ja" data-hashtags="東京自習会,tokyoselfstudy">
         Tweet
         </a>
       </div>

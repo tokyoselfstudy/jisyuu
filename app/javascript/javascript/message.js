@@ -1,5 +1,13 @@
 $(document).on('turbolinks:load', () => {
   if (window.location.href.match(/\/rooms\/\d+/)) {
+    var element = document.documentElement;
+    var bottom = element.scrollHeight - element.clientHeight;
+    window.scroll(0, bottom);
+  }
+});
+
+$(document).ready(() => {
+  if (window.location.href.match(/\/rooms\/\d+/)) {
     var room_id = $('.room').data('room-id')
     $.ajax({
       url: '/api/messages/read_count',

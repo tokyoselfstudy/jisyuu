@@ -21,6 +21,7 @@ import 'bootstrap';
 import '../stylesheets/application';
 import '../stylesheets/actiontext';
 import '../javascript/message';
+import '../javascript/learn_records';
 import '@fortawesome/fontawesome-free/js/all';
 
 

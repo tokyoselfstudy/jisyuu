@@ -5,7 +5,7 @@ class LearnRecordsController < ApplicationController
   before_action :correct_user?, only: [:edit, :update, :destroy, :menu]
 
   def index
-    @learn_records = LearnRecord.user_learn_records(current_user.id).order(created_at: :desc)
+    @learn_records = LearnRecord.publish.order(created_at: :desc)
   end
 
   def new

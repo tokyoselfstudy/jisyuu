@@ -12,6 +12,11 @@ class UsersController < ApplicationController
     @past_events = Event.where(user_id: params[:id], is_deleted: false).where("event_date < ?", Time.zone.now)
   end
 
+  def my_records
+    @learn_records = LearnRecord.user_learn_records(current_user.id).order(created_at: :desc)
+    render "learn_records/index"
+  end
+
   def copy_events
     @events = Event
                 .where(user_id: params[:id], is_deleted: false)

@@ -16,7 +16,16 @@
   <section>
     <div class="container col-md-8 col-lg-6">
       <div class="">
-        <h2 style="font-size: 24px;" class="mt-4 mb-4 font-weight-bold"><span><i class="fas fa-list-alt icon-color mr-2"></i></span>オフィシャルブログ</h1>
+        <h2 style="font-size: 24px;" class="mt-4 mb-4 font-weight-bold"><span><i class="fas fa-list-alt icon-color mr-2"></i></span>みんなの勉強ノート</h2>
+        <%= render partial: 'learn_records/learn_record', collection: @learn_records, as: 'learn_record' %>
+      </div>
+      <%= link_to 'みんなの勉強ノート一覧を見る', learn_records_path, class: 'to_index-btn text-center mx-auto' %>
+    </div>
+  </section>
+  <section>
+    <div class="container col-md-8 col-lg-6">
+      <div class="">
+        <h2 style="font-size: 24px;" class="mt-4 mb-4 font-weight-bold"><span><i class="fas fa-list-alt icon-color mr-2"></i></span>オフィシャルブログ</h2>
         <%= render partial: 'blogs/blog', collection: @blogs, as: 'blog' %>
       </div>
       <%= link_to 'ブログ一覧を見る', blogs_path, class: 'to_index-btn text-center mx-auto' %>

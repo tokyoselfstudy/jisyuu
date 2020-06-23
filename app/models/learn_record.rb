@@ -13,11 +13,12 @@ class LearnRecord < ApplicationRecord
 
   has_rich_text :content
 
-  scope :with_study_category, -> { joins(:study_category) }
+  scope :with_study_category, -> { includes(:study_category) }
   scope :user_learn_records, -> (user_id) do
     return where(nil) if user_id.blank?
-    with_study_category.eager_load(:study_category).where(user_id: user_id, is_deleted: false)
+    with_study_category.where(user_id: user_id, is_deleted: false)
   end
+  scope :publish, -> { with_study_category.where(is_published: true, is_deleted: false) }
 
   def thumbnail_validate
     if thumbnail.attached?

@@ -11,6 +11,7 @@ class TopController < ApplicationController
                 .order(:event_date)
                 .limit(5)
     @blogs = Blog.blogs_index.order(created_at: :desc).limit(3)
+    @learn_records = LearnRecord.publish.order(created_at: :desc).limit(3)
   end
 
   def menu

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.array! @messages do |message|
   json.id message.id
   json.sender message&.sender&.nickname.present? ? message&.sender&.nickname : message&.sender&.view_full_name

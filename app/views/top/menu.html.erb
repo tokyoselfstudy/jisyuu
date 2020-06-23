@@ -11,7 +11,7 @@
           <li class="border-bottom p-4"><i class="fas fa-pencil-alt icon-color mr-2"></i></i><%= link_to 'イベント作成', new_event_path, class: 'text-body text-decoration-none' %></li>
           <li class="border-bottom p-4"><i class="fas fa-flag icon-color mr-2"></i><%= link_to 'イベント管理', events_user_path(current_user), class: 'text-body text-decoration-none' %></li>
         <% end %>
-        <li class="border-bottom p-4"><i class="fas fa-list-alt icon-color mr-2"></i><%= link_to '勉強ノート一覧', learn_records_path, class: 'text-body text-decoration-none' %></li>
+        <li class="border-bottom p-4"><i class="fas fa-list-alt icon-color mr-2"></i><%= link_to '勉強ノート一覧', my_records_user_path(current_user), class: 'text-body text-decoration-none' %></li>
         <li class="border-bottom p-4"><i class="fas fa-pencil-alt icon-color mr-2"></i><%= link_to '勉強ノートを書く', new_learn_record_path, class: 'text-body text-decoration-none' %></li>
         <li class="border-bottom p-4"><i class="fas fa-user icon-color mr-2"></i><%= link_to 'プロフィール編集', edit_user_registration_path, class: 'text-body text-decoration-none' %></li>
         <li class="border-bottom p-4"><i class="fas fa-sign-out-alt mr-2 icon-color"></i><%= link_to 'ログアウト', destroy_user_session_path, class: 'text-body text-decoration-none', method: :delete, data: {confirm: "ログアウトしてよろしいですか？"} %></li>

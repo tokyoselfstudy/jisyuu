@@ -13,8 +13,8 @@ FactoryBot.define do
     image { fixture_file_upload(Rails.root.join("spec", "support", "assets", "landescape.jpg"))
     }
     user
-    after(:build) do |event|
-      FactoryBot.build(:room, event: event)
+    after(:create) do |event|
+      FactoryBot.create(:room, event: event)
     end
   end
 end

@@ -29,4 +29,10 @@ FactoryBot.define do
     is_manager { true }
     confirmed_at { Date.today }
   end
+
+  factory :new_registration_confirmed_user, class: User do
+    sequence(:email) { |n| "tester#{n}@example.com" }
+    password { "hogehogefoobar" }
+    confirmed_at { Date.today }
+  end
 end

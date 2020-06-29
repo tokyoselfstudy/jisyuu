@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-class Admin::UsersController < ApplicationController
-  include AdminConcern
-  before_action :redirect_root_not_admin
+class Admin::UsersController < Admin::Base
 
   def index
     @q = User.ransack(params[:q])
@@ -32,9 +30,5 @@ class Admin::UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:is_manager)
-    end
-
-    def redirect_root_not_admin
-      redirect_to root_path if !is_admin_user?
     end
 end

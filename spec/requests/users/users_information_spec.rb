@@ -9,7 +9,6 @@ RSpec.describe "ユーザーアカウント管理", type: :request do
 
     context 'ログインしている場合' do
       before do
-        new_registration_confirmed_user.confirm
         sign_in new_registration_confirmed_user
       end
       it "全ての必須項目を埋めていれば更新できる" do

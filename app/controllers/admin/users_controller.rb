@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Admin::UsersController < Admin::Base
-
   def index
     @q = User.ransack(params[:q])
     @users = @q.result(distinct: true).page(params[:page]).per(10)

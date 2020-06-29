@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Admin::EventsUsersController < Admin::Base
   def destroy
     events_user = EventsUser.find(params[:id])

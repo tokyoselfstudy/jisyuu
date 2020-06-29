@@ -7,7 +7,7 @@ RSpec.describe "ユーザーアカウント管理", type: :request do
     let(:new_registration_confirmed_user) { create(:new_registration_confirmed_user) }
     let(:params_hash) { attributes_for(:user) }
 
-    context 'ログインしている場合' do
+    context "ログインしている場合" do
       before do
         sign_in new_registration_confirmed_user
       end

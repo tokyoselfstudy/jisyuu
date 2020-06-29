@@ -53,14 +53,15 @@
             <tr>
               <th style="width: 33%;">参加日時</th>
               <th style="width: 40%;">ユーザー名</th>
-              <th style="width: 27%;"></th>
+              <th style="width: 27%;">参加者から削除</th>
             </tr>
           </thead>
           <tbody>
-            <% @event.participants_users.each do |participants_user| %>
+            <% @event.events_users.each do |events_user| %>
               <tr style="height: 75px;">
-                <td><%= datetime_disp(participants_user.created_at) %></td>
-                <td><%= link_to(participants_user.view_full_name, user_path(participants_user)) %></td>
+                <td><%= datetime_disp(events_user.created_at) %></td>
+                <td><%= link_to(events_user.view_full_name, user_path(events_user.user)) %></td>
+                <td><%= link_to("削除", admin_user_events_user_path(events_user.user, events_user), method: :delete, data: { confirm: "イベント参加者から#{events_user.view_full_name}さんを削除します。よろしいですか？"}, class: "btn btn-danger" ) %></td>
               </tr>
             <% end %>
           </tbody>
@@ -70,4 +71,4 @@
   </section>
 </div>
 
-  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

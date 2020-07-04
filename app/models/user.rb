@@ -6,6 +6,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
+  KATAKANA_REGEXP = /\A[\p{katakana}\u{30fc}]+\z/
+  FAMILY_FIRST_NAME_REGEXP = /\A[\p{katakana}\p{Han}\p{Hiragana}]+\z/
+  validates :family_name, :first_name, presence: true, format: { with: FAMILY_FIRST_NAME_REGEXP }
+  validates :family_name_kana, :first_name_kana, presence: true, format: { with: KATAKANA_REGEXP }
+  validates :studying, :introduction, :gender, :birthdate, :email, presence: true
+
   has_one_attached :avatar
   validate :avatar_presence, on: :update
 

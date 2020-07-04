@@ -1,0 +1,18 @@
+ja:
+  activerecord:
+    models:
+      user: イベント
+    attributes:
+      user:
+        pref_id: 都道府県
+        users_category_id: 職業
+        users_job_category_id: 職種
+        family_name: 姓
+        first_name: 名
+        family_name_kana: セイ
+        first_name_kana: メイ
+        nickname: ニックネーム
+        gender: 性別
+        studying: 学習すること
+        introduction: 自己紹介
+        birthdate date: 誕生日

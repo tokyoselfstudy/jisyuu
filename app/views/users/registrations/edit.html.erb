@@ -14,13 +14,13 @@
       <div class="row">
         <div class="col-6">
           <div class="field mb-3">
-            <%= f.label '姓' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span><br />
+            <%= f.label :family_name, '姓' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span><br />
             <%= f.text_field :family_name, autofocus: true, class: 'form-control' %>
           </div>
         </div>
         <div class="col-6">
           <div class="field mb-3">
-            <%= f.label '名' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span><br />
+            <%= f.label :first_name, '名' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span><br />
             <%= f.text_field :first_name, autofocus: true, class: 'form-control' %>
           </div>
         </div>
@@ -29,20 +29,20 @@
       <div class="row">
         <div class="col-6">
           <div class="field mb-4">
-            <%= f.label 'セイ' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span><br />
+            <%= f.label :family_name_kana, 'セイ' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span><br />
             <%= f.text_field :family_name_kana, autofocus: true, class: 'form-control' %>
           </div>
         </div>
         <div class="col-6">
           <div class="field mb-4">
-            <%= f.label 'メイ' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span><br />
+            <%= f.label :first_name_kana, 'メイ' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span><br />
             <%= f.text_field :first_name_kana, autofocus: true, class: 'form-control' %>
           </div>
         </div>
       </div>
 
       <div class="field mb-4">
-        <%= f.label 'ニックネーム' %><span style="font-size:10px;" class="ml-2 badge badge-success">設定がある場合優先表示されます</span><br />
+        <%= f.label :nickname, 'ニックネーム' %><span style="font-size:10px;" class="ml-2 badge badge-success">設定がある場合優先表示されます</span><br />
         <%= f.text_field :nickname, autofocus: true, class: 'form-control' %>
       </div>
 
@@ -84,7 +84,7 @@
       <% end %>
 
       <div class="field mb-4">
-        <%= f.label 'プロフィール写真' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span><br />
+        <%= f.label :avatar, 'プロフィール写真' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span><br />
         <% if @user.avatar.attached? %>
           <div class="filefield">
             <%= image_tag(@user.avatar.variant(resize: "150x150"), class: 'w-100 event-img text-center mb-2') %>
@@ -98,27 +98,27 @@
       </div>
 
       <div class=" mb-4 form-group">
-        <%= f.label '居住地' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span><br />
+        <%= f.label :pref_id, '居住地' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span><br />
         <%= f.collection_select(:pref_id, CountriesPref.all, :id, :name, { selected: current_user.pref_id.present? ? current_user.pref_id : '13' }, class: 'form-control') %>
       </div>
 
       <div class=" mb-4 form-group">
-        <%= f.label '職業' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span><br />
+        <%= f.label :users_category_id, '職業' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span><br />
         <%= f.collection_select(:users_category_id, UsersCategory.all, :id, :name, { selected: current_user.users_category_id.present? ? current_user.users_category_id : '' }, class: 'form-control') %>
       </div>
 
       <div class=" mb-4 form-group">
-        <%= f.label '職種' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span><br />
+        <%= f.label :users_job_category_id, '職種' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span><br />
         <%= f.collection_select(:users_job_category_id, UsersJobCategory.all, :id, :name, {}, class: 'form-control', selected: current_user.users_job_category_id.present? ? current_user.users_job_category_id : '') %>
       </div>
 
       <div class="field mb-4">
-        <%= f.label '学習する事' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span><br />
+        <%= f.label :studying, '学習する事' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span><br />
         <%= f.text_field :studying, autofocus: true, class: 'form-control' %>
       </div>
 
       <div class="field mb-4">
-        <%= f.label '自己紹介' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span><br />
+        <%= f.label :introduction, '自己紹介' %><span style="font-size:10px;" class="ml-2 badge badge-danger">必須</span><br />
         <%= f.text_area :introduction, autofocus: true, class: 'form-control', rows: 8 %>
       </div>
 

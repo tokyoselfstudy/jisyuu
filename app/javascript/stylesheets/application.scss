@@ -69,6 +69,16 @@ body {
   border-radius: 5px;
 }
 
+// validation
+
+div.field_with_errors {
+  display: inline;
+  padding: 0;
+  label { color: #cc0000;}
+  input { background-color: #ffcccc;}
+  textarea { background-color: #ffcccc;}
+}
+
 .to_index-btn {
   padding: 10px;
   background-color: white;

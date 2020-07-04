@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'blogs/index'
-  get 'blogs/show'
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   
   devise_for :users, controllers: {
@@ -17,6 +15,7 @@ Rails.application.routes.draw do
     member do
       get 'events'
       get 'copy_events'
+      get 'my_records'
     end
   end
   resources :events do
@@ -29,7 +28,7 @@ Rails.application.routes.draw do
   resources :messages, only: [:create, :destroy]
   resources :learn_records do
     member do 
-     get 'menu'
+      get 'menu'
     end
   end
   resources :blogs
@@ -41,7 +40,9 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :users
+    resources :users, only: [:index, :show, :update] do
+      resources :events_users, only: [:destroy]
+    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

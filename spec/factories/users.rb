@@ -7,8 +7,8 @@ FactoryBot.define do
     users_job_category_id { 4 }
     family_name { "田中" }
     first_name { "太郎" }
-    family_name_kana { "たなか" }
-    first_name_kana { "たろう" }
+    family_name_kana { "タナカ" }
+    first_name_kana { "タロウ" }
     gender { "male" }
     studying { "プログラミング" }
     introduction { "こんにちは..." }

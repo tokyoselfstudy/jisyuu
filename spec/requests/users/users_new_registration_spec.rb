@@ -13,6 +13,7 @@ RSpec.describe "ユーザーアカウント新規登録", type: :request do
           post user_registration_path,
             params: { user: new_registration_user_params }
         }.to change(User, :count).by(1)
+        expect(response).to redirect_to root_path
       end
     end
 

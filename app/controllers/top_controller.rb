@@ -17,6 +17,9 @@ class TopController < ApplicationController
   def menu
   end
 
+  def lp
+  end
+
   def manager_menu
     @event = Event.find(params[:event_id])
   end

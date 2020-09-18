@@ -1,0 +1,123 @@
+<section class="lp-image">
+  <div class="container col-10 col-md-10 p-0 plans-jumbotron">
+    <div class="text-center">
+      <h1 class="">学ぶ習慣をつくろう</h1>
+      <p class="mt-4 white-color">「はじめる」から「つづく」</p>
+      <p class="mb-5 white-color">「つづく」から「習慣へ」</p>
+      <%= link_to '新規登録する', new_user_registration_path, class: 'btn lp-cv-btn', target: 'blank' %>
+    </div>
+  </div>
+</section>
+<section class="lp-lead">
+  <div class="container col-md-8 col-lg-8">
+    <div class="lead-desc">
+      <p class="mt-4 mb-4 font-weight-bold">東京自習会は、"習慣化する仕組み"を用意しました。</p>
+      <p >目標達成のため、固い決意をしても揺らぐ時もあるかもしれません。<br>しかし、継続して努力する仲間が集うコミュニティにあなたが所属していたらどうでしょうか？</p><br>
+      <p >東京自習会は『スキルアップしたい』、『新しいことに挑戦したい』、『一緒に頑張る仲間が欲しい』<br>そんなあなたのためのコミュニティです。</p>
+      <p >私たちが大切にしている考え方は「日々、目標を達成することで成功体験を積む」ことです。<br>私たちとともに、東京自習会で『学ぶ習慣』をつけた人になりましょう。</p>
+    </div>
+  </div>
+</section>
+<section class="lp-lead2">
+  <div class="container">
+    <div class="row">
+      <div class="d-none d-md-block col-md-6 text-center">
+        <%= image_tag('/images/lp/event-img.png', style: 'height: 70vh;') %>
+      </div>
+      <div class="col col-md-6 text-center">
+        <h3 class="lp-read2-title mb-5">オンラインでもオフラインでも参加できる</h3>
+        <p class="lp-read2-desc">無料会員登録後、予約システム（当サイト内）からほぼ毎日開催されているイベントに、いつでも参加予約をすることができます。<br><br>有料会員になれば更に「スキルアップイベント」「交流イベント」「交流コミュニティ」へ参加することができ、仲間と密に交流しながら、学習を習慣化しつつ目標達成にコミットすることができます。</p>
+        <%= image_tag('/images/lp/zoom-img.jpg', style: 'max-width: 100%;') %>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="lp-plan">
+  <div class="container">
+    <h3 class="text-center lp-read2-title pb-5">あなたにあった参加方法を見つけよう！</h3>
+    <div class="text-center">
+      <div class="row">
+        <div class="d-md-block d-none col-md-4 plans-comparison-trial">
+          <h4>月額料金</h4>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="lp-card">
+            <div class="lp-card-header">
+              <h4 class="lp-card-title">通常メンバー</h4>
+              <p>「学びの習慣化」で、</p>
+              <p class="mb-0">目標達成の力を身につける</p>
+            </div>
+            <div class="plans-comparison-box__images">
+              <%= image_tag('/images/lp/character.jpg', style: 'max-width: 40%;height: auto;') %>
+            </div>
+            <div class="plans-card__body">
+              <span class="lp-price">無料</span>
+              <div class="pb-2 pt-2">
+                <i class="fa fa-check mr-2"></i>東京自習会イベント
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="lp-card">
+            <div class="lp-card-header">
+              <h4 class="lp-card-title">交流メンバー</h4>
+              <p>「交流」「スキルアップ勉強会」で、</p>
+              <p>知見を広げプラスαの力を身につける</p>
+            </div>
+            <div class="plans-comparison-box__images">
+              <%= image_tag('/images/lp/character.jpg', style: 'max-width: 40%;height: auto;') %>
+            </div>
+            <div class="plans-card__body">
+              <span class="lp-price">¥980</span>
+              <span>/月(税別)</span>
+              <div class="text-center">
+                <i class="fa fa-check main-color mr-2"></i>東京自習会イベント<br>
+                <i class="fa fa-check main-color mr-2"></i>交流コミュニティ<br>
+                <i class="fa fa-check main-color mr-2"></i>交流イベント<br>
+                <i class="fa fa-check main-color mr-2"></i>スキルアップ勉強会に参加可能
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-8 offset-md-2 pt-5 pb-4">
+        <p>交流メンバーへの登録には、事前に<span>新規登録/ログイン</span>が必要です</p>
+        <div class="d-flex justify-content-around">
+          <%= link_to 'ログイン', new_user_session_path, class: 'btn lp-cv-btn', target: 'blank' %>
+          <%= link_to '新規登録', new_user_registration_path, class: 'btn lp-cv-btn', target: 'blank' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="lp-qa">
+  <div class="container">
+    <h3 class="text-center lp-read2-title pb-5">よくある質問</h3>
+    <div class="qa-card">
+      <h4 class="qa-title">東京自習会に参加したら、毎回参加しなくてはいけませんか？</h4>
+      <p class="qa-disc">自習会は毎週、開催をしています。ですが、毎回参加しなくても大丈夫です！参加しないことによるペナルティ等もありません。ご都合の良い時に参加して頂ければと思います。</p>
+    </div>
+    <div class="qa-card">
+      <h4 class="qa-title">仕事や学校、その他の都合で遅刻・ドタキャンしてしまう可能性があるのですが。。</h4>
+      <p class="qa-disc">「寝坊しちゃった！」「急な仕事で行けそうにない！」そんなこともあると思います！なので、ドタキャンして下さい！ドタキャンしてもペナルティなどはありませんのでご安心下さい。</p>
+    </div>
+    <div class="qa-card">
+      <h4 class="qa-title">ビジネス系・宗教の勧誘等はありませんか？</h4>
+      <p class="qa-disc">東京自習会は、勧誘や営業を禁止しています。参加者にそのような方がいた場合は参加をお断りしております。</p>
+    </div>
+    <div class="qa-card">
+      <h4 class="qa-title">どのような人が参加し何をしているのですか？</h4>
+      <p class="qa-disc">年齢　：20代前半から30代後半<br>
+        男女比：男性4割、女性6割<br>
+        職業　：学生、会社員、自営業<br>
+        業種　：IT(SE)系、医療系、事務系など<br>
+        自習してるもの：資格の勉強、仕事、読書
+      </p>
+    </div>
+    <div class="qa-card">
+      <h4 class="qa-title">途中参加、途中退室したいんですが可能ですか？</h4>
+      <p class="qa-disc">休日は色々と用事を入れている方も多いと思います。なので途中参加も途中退室もOKです！ご自身のライフスタイルに合わせて参加して頂ければと思います。</p>
+    </div>
+  </div>
+</section>

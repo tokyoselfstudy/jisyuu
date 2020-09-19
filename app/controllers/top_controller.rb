@@ -5,6 +5,7 @@ class TopController < ApplicationController
   before_action :is_manager?, only: [:manager_menu]
 
   def index
+    return redirect_to '/lp' unless user_signed_in?
     @events = Event
                 .where(is_deleted: false)
                 .where("event_date > ?", Time.zone.now)
@@ -15,6 +16,9 @@ class TopController < ApplicationController
   end
 
   def menu
+  end
+
+  def lp
   end
 
   def manager_menu

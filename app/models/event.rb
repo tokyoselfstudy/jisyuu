@@ -29,9 +29,6 @@ class Event < ApplicationRecord
 
   def image_presence
     if image.attached?
-      Rails.logger.debug(image.content_type)
-      Rails.logger.debug(!image.content_type.in?(%('image/jpeg image/png image/jpg')))
-      Rails.logger.debug("image.content_type---------------------")
       if !image.content_type.in?(%('image/jpeg image/png image/jpg'))
         errors.add(:image, "にはjpeg/png/jpgのいづれかのファイルを添付してください")
       elsif image.blob.byte_size > 10.megabytes

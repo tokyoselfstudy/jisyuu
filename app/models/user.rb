@@ -8,12 +8,12 @@ class User < ApplicationRecord
 
   KATAKANA_REGEXP = /\A[\p{katakana}\u{30fc}]+\z/
   FAMILY_FIRST_NAME_REGEXP = /\A[\p{katakana}\p{Han}\p{Hiragana}]+\z/
-  validates :family_name, :first_name, presence: true, format: { with: FAMILY_FIRST_NAME_REGEXP }, on: :update
-  validates :family_name_kana, :first_name_kana, presence: true, format: { with: KATAKANA_REGEXP }, on: :update
-  validates :studying, :introduction, :gender, :birthdate, :email, presence: true, on: :update
+  validates :family_name, :first_name, presence: true, format: { with: FAMILY_FIRST_NAME_REGEXP }, on: :update, unless: :encrypted_password_changed?
+  validates :family_name_kana, :first_name_kana, presence: true, format: { with: KATAKANA_REGEXP }, on: :update, unless: :encrypted_password_changed?
+  validates :studying, :introduction, :gender, :birthdate, :email, presence: true, on: :update, unless: :encrypted_password_changed?
 
   has_one_attached :avatar
-  validate :avatar_presence, on: :update
+  validate :avatar_presence, on: :update, unless: :encrypted_password_changed?
 
   has_many :events
   has_many :events_users
@@ -21,8 +21,8 @@ class User < ApplicationRecord
 
   def avatar_presence
     if avatar.attached?
-      if !avatar.content_type.in?(%('image/jpeg image/png'))
-        errors.add(:avatar, "にはjpegまたはpngファイルを添付してください")
+      if !avatar.content_type.in?(%('image/jpeg image/png image/jpg'))
+        errors.add(:avatar, "にはjpeg/png/jpgいづれかのファイルを添付してください")
       elsif avatar.blob.byte_size > 10.megabytes
         errors.add(:avatar, "ファイルのサイズが大きすぎます")
       end

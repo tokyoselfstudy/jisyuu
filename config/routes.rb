@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   }
 
   root 'top#index'
+  get 'lp', to: 'top#lp'
   get 'menu', to: 'top#menu'
   get 'manager_menu/:event_id', to: 'top#manager_menu'
   resources :users, only: [:show] do

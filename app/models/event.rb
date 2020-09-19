@@ -29,8 +29,8 @@ class Event < ApplicationRecord
 
   def image_presence
     if image.attached?
-      if !image.content_type.in?(%('image/jpeg image/png'))
-        errors.add(:image, "にはjpegまたはpngファイルを添付してください")
+      if !image.content_type.in?(%('image/jpeg image/png image/jpg'))
+        errors.add(:image, "にはjpeg/png/jpgのいづれかのファイルを添付してください")
       elsif image.blob.byte_size > 10.megabytes
         errors.add(:image, "ファイルのサイズが大きすぎます")
       end

@@ -3,14 +3,15 @@
   <head>
     <title>東京自習会</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta property="og:image" content="https://www.tokyoselfstudy.com/jisyuu-top.jpg">
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content="<%= @meta_image.present? ? @meta_image : "https://www.tokyoselfstudy.com/jisyuu-top.jpg" %>">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@tokyoselfstudy" />
     <meta property="og:url" content="<%= @meta_url.present? ? @meta_url : 'https://www.tokyoselfstudy.com/' %>" />
     <meta property="og:title" content="<%= @meta_title.present? ? @meta_title : '【東京自習会】学びを加速する「自習」をみんなで行うコミュニティ' %>" />
     <meta property="og:description" content="<%= @meta_description.present? ? @meta_description : '【東京自習会】は、学びを加速する「自習」をみんなで行うコミュニティです。社会人を中心に、簿記・TOEIC・基本情報技術者試験・宅建・行政書士・公務員試験・プログラミング等様々な学習を行なっているメンバーと切磋琢磨することができます。' %>" />
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= favicon_link_tag '/favicon.ico' %>
     
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>

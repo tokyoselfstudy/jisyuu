@@ -8,7 +8,7 @@
     <figure class="m-0">
       <%= image_tag(@event.image.variant(resize: "1000x300"), class: 'w-100 event-img', alt: @event.title.presence || 'イベントの画像') %>
     </figure>
-    <div class="d-flex justify-content-between">
+    <div class="d-flex">
       <div class="d-flex mt-2 ml-3">
         <%= image_tag(@event.user.avatar.variant(resize: "100x100"), class: 'rounded-circle user-circle-image') if @event.user.avatar.attached? %>
         <div class="ml-3">
@@ -16,7 +16,7 @@
           <p class="font-weight-bold"><%= @event.user.display_priority_nickname %></p>
         </div>
       </div>
-      <div class="twitter d-flex align-items-center">
+      <div class="twitter d-flex align-items-center ml-3">
         <a href="//twitter.com/share" class="twitter-share-button" data-text="一緒にイベントへ参加しよう！[<%= @event.event_date_shape %>~]東京自習会イベント-<%= @event.title %>" data-url="https://www.tokyoselfstudy.com/events/<%= @event.id %>" data-lang="ja" data-hashtags="東京自習会,tokyoselfstudy">
         Tweet
         </a>

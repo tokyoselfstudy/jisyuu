@@ -25,6 +25,7 @@ class EventsController < ApplicationController
     @meta_title = @event.title
     @meta_url = "https://www.tokyoselfstudy.com/events/#{@event.id}"
     @meta_description = @event.detail
+    @meta_image = url_for(@event.image)
   end
 
   def create

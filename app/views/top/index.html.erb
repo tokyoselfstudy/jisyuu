@@ -7,7 +7,9 @@
             <%= image_tag('/jisyuu-top.jpg', style: 'width: 100%;object-fit: contain;') %>
           </div>
           <div class="carousel-item">
-            <%= image_tag('/kouryuu.png', style: 'width: 100%;object-fit: contain;') %>
+            <%= link_to "https://www.tokyoselfstudy.com/blogs/20" do %>
+              <%= image_tag('/kouryuu.png', style: 'width: 100%;object-fit: contain;') %>
+            <% end %>
           </div>
           <a class="carousel-control-prev" href="#top-img" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

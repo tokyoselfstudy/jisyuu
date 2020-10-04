@@ -5,7 +5,7 @@ class BlogsController < ApplicationController
   before_action :is_admin_user?, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @blogs = Blog.blogs_index.order(:created_at).page(params[:page]).per(8)
+    @blogs = Blog.blogs_index.order(created_at: :desc).page(params[:page]).per(8)
   end
 
   def new
@@ -15,6 +15,10 @@ class BlogsController < ApplicationController
   def show
     @is_admin_user = is_admin_user?
     @blog = Blog.find(params[:id])
+
+    @meta_title = @blog.title
+    @meta_url = "https://www.tokyoselfstudy.com/blogs/#{@blog.id}"
+    @meta_image = url_for(@blog.thumbnail)
     return head 404 if @blog.is_deleted == true
   end
 

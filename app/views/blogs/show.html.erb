@@ -7,10 +7,19 @@
         <%= link_to '削除', blog_path(@blog), method: :delete %>
       </div>
     <% end %>
-    <p class="text-center" style="color: #666666;">作成日：<%= datetime_disp(@blog.created_at) %></p>
+    <div class="d-flex justify-content-around">
+      <p class="ml-2" style="color: #666666;">作成日：<%= datetime_disp(@blog.created_at) %></p>
+      <div class="twitter ml-2">
+        <a href="//twitter.com/share" class="twitter-share-button" data-text="一緒にイベントへ参加しよう！[東京自習会イベント予告]<%= @blog.title %>" data-url="https://www.tokyoselfstudy.com/blogs/<%= @blog.id %>" data-lang="ja" data-hashtags="東京自習会,tokyoselfstudy">
+        Tweet
+        </a>
+      </div>
+    </div>
     <%= image_tag(@blog.thumbnail.variant(resize: "1000x300"), class: 'w-100 event-img text-center mb-2') %>
     <div class="">
       <%= @blog.content%>
     </div>
   </div>
 </div>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

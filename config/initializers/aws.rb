@@ -3,5 +3,6 @@ ActionMailer::Base.add_delivery_method(
   AWS::SES::Base,
   access_key_id: Rails.application.credentials.dig(:aws, :access_key_id),
   secret_access_key: Rails.application.credentials.dig(:aws, :secret_access_key),
-  server: 'email.us-east-1.amazonaws.com'
+  server: 'email.us-east-1.amazonaws.com',
+  signature_version: 4,
 )

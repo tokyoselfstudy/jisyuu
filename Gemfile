@@ -38,7 +38,7 @@ gem "image_processing", "~> 1.2"
 
 # AWS
 gem "aws-sdk-s3", require: false
-gem "aws-ses"
+gem "aws-ses", git: "https://github.com/zebitex/aws-ses.git", ref: "78-sigv4-problem"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false

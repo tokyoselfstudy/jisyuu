@@ -1,3 +1,14 @@
+GIT
+  remote: https://github.com/zebitex/aws-ses.git
+  revision: 65e1ff1c3c2031b243f773cb9e61df6e49db71dd
+  ref: 78-sigv4-problem
+  specs:
+    aws-ses (0.7.1)
+      builder
+      mail (> 2.2.5)
+      mime-types
+      xml-simple
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -75,11 +86,6 @@ GEM
       aws-sdk-core (~> 3, >= 3.83.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.1)
-    aws-ses (0.7.1)
-      builder
-      mail (> 2.2.5)
-      mime-types
-      xml-simple
     aws-sigv4 (1.1.1)
       aws-eventstream (~> 1.0, >= 1.0.2)
     bcrypt (3.1.13)
@@ -332,7 +338,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-import
   aws-sdk-s3
-  aws-ses
+  aws-ses!
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)

@@ -8,21 +8,21 @@
     <% else %>
       <%= image_tag(@learn_record.user.avatar.variant(resize: "1000x300"), class: 'w-100 event-img text-center mb-2') %>
     <% end %>
-    <div class="d-flex mt-2 justify-content-around">
-      <div class="d-flex ml-2">
+    <div class="d-flex">
+      <div class="d-flex mt-2 ml-3">
         <%= image_tag(@learn_record.user.avatar.variant(resize: "100x100"), class: 'rounded-circle user-circle-image') if @learn_record.user.avatar.attached? %>
         <div class="ml-3">
           <p class="mb-0">作成者</p>
           <a href="/users/<%= @learn_record.user.id %>" class="font-weight-bold"><%= @learn_record.user.display_priority_nickname %></a>
         </div>
       </div>
-      <div class="twitter ml-2 d-flex align-items-center">
+      <div class="twitter d-flex align-items-center ml-3">
         <a href="//twitter.com/share" class="twitter-share-button" data-text="[東京自習会 - みんなのブログ]<%= @learn_record.title %>" data-url="https://www.tokyoselfstudy.com/learn_records/<%= @learn_record.id %>" data-lang="ja" data-hashtags="東京自習会,tokyoselfstudy">
-          Tweet
+        Tweet
         </a>
       </div>
     </div>
-    <div class="mt-3">
+    <div class="mt-4">
       <%= @learn_record.content%>
     </div>
   </div>

@@ -13,7 +13,7 @@
         <%= image_tag(@event.user.avatar.variant(resize: "100x100"), class: 'rounded-circle user-circle-image') if @event.user.avatar.attached? %>
         <div class="ml-3">
           <p class="mb-0">ファシリテーター</p>
-          <p class="font-weight-bold"><%= @event.user.display_priority_nickname %></p>
+          <a href="/users/<%= @event.user.id %>" class="font-weight-bold"><%= @event.user.display_priority_nickname %></a>
         </div>
       </div>
       <div class="twitter d-flex align-items-center ml-3">

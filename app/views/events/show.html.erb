@@ -13,7 +13,7 @@
         <%= image_tag(@event.user.avatar.variant(resize: "100x100"), class: 'rounded-circle user-circle-image') if @event.user.avatar.attached? %>
         <div class="ml-3">
           <p class="mb-0">ファシリテーター</p>
-          <p class="font-weight-bold"><%= @event.user.display_priority_nickname %></p>
+          <a href="/users/<%= @event.user.id %>" class="font-weight-bold"><%= @event.user.display_priority_nickname %></a>
         </div>
       </div>
       <div class="twitter d-flex align-items-center ml-3">
@@ -47,7 +47,7 @@
         <p class="mt-4 font-weight-bold" style="font-size: 18px;"><span style="color: red;"><%= @event.participate_count %></span>/<%= @event.num_of_applicant %></p>
       </div>
       <% if user_signed_in? && current_user.is_manager? && @event.participants_users.present? %>
-        <p>⚠︎管理人にのみ表示されています</p>
+        <p>??管理人にのみ表示されています</p>
         <table class="table table-hover">
           <thead>
             <tr>

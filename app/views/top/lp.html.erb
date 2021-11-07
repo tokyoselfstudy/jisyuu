@@ -1,9 +1,9 @@
 <section class="lp-image">
   <div class="container col-10 col-md-10 p-0 plans-jumbotron">
     <div class="text-center">
-      <h1 class="">学ぶ習慣をつくろう</h1>
+      <h1 class="">良い習慣をつくろう</h1>
       <p class="mt-4 white-color">「はじめる」から「つづく」</p>
-      <p class="mb-5 white-color">「つづく」から「習慣へ」</p>
+      <p class="mb-5 white-color">「つづく」から「習慣」へ</p>
       <%= link_to '新規登録する', new_user_registration_path, class: 'btn lp-cv-btn', target: 'blank' %>
     </div>
   </div>
@@ -20,15 +20,23 @@
 </section>
 <section class="lp-lead2">
   <div class="container">
-    <div class="row">
-      <div class="d-none d-md-block col-md-6 text-center">
-        <%= image_tag('/images/lp/event-img.png', style: 'height: 70vh;') %>
-      </div>
-      <div class="col col-md-6 text-center">
+    <div class="row justify-content-center">
+      <div class="col col-md-8 col-lg-8 text-center">
         <h3 class="lp-read2-title mb-5">オンラインでもオフラインでも参加できる</h3>
-        <p class="lp-read2-desc">無料会員登録後、予約システム（当サイト内）からほぼ毎日開催されているイベントに、いつでも参加予約をすることができます。<br>有料会員になれば更に「スキルアップイベント」「交流イベント」「交流コミュニティ」へ参加することができ、仲間と密に交流しながら、学習を習慣化しつつ目標達成にコミットすることができます。<br><a href="<%= events_path %>" target="_blank"><i class="fas fa-external-link-alt mr-2"></i>イベント一覧を見る</a></p>
-        <%= image_tag('/images/lp/zoom-img.jpg', style: 'max-width: 100%;') %>
+        <div class="lp-read2-desc">
+          <p>無料会員登録後、予約システム（当サイト内）からほぼ毎日開催されている無料会員専用イベントに、いつでも参加予約できます。</p>
+          <p>有料会員になれば「オンライン・オフライン自習会」や「交流イベント」「オンラインコミュニティ」へ参加することができ、勉強仲間と交流しながら学習を習慣化しつつ目標を達成することができます！</p>
+          <p><a href="<%= events_path %>" target="_blank"><i class="fas fa-external-link-alt mr-2"></i>イベント一覧を見る</a></p>
+          <%= image_tag('/images/lp/offline-img.png', class: 'mb-3', style: 'max-width: 100%;') %>
+          <%= image_tag('/images/lp/online-img.png', style: 'max-width: 100%;') %>
+        </div>
       </div>
+    </div>
+    <div class="col-12 col-md-8 offset-md-2 pt-5 pb-4 text-center">
+      <p>コミュニティに参加をご希望の場合は下記のリンク先からお申込み下さい。</p>
+        <div class="d-flex justify-content-around">
+          <%= link_to 'コミュニティに参加する！', 'https://community.camp-fire.jp/projects/view/452788', class: 'btn lp-community-btn', target: 'blank' %>
+        </div>
     </div>
   </div>
 </section>
@@ -37,23 +45,20 @@
     <h3 class="text-center lp-read2-title pb-5">あなたにあった参加方法を見つけよう！</h3>
     <div class="text-center">
       <div class="row">
-        <div class="d-md-block d-none col-md-4 plans-comparison-trial">
-          <h4>月額料金</h4>
-        </div>
         <div class="col-12 col-md-4">
           <div class="lp-card">
             <div class="lp-card-header">
-              <h4 class="lp-card-title">通常メンバー</h4>
-              <p>「学びの習慣化」で、</p>
-              <p class="mb-0">目標達成の力を身につける</p>
+              <h4 class="lp-card-title">ビジターメンバー</h4>
+              <p>習慣化する為の</p>
+              <p class="mb-0">第一歩を踏み出す</p>
             </div>
             <div class="plans-comparison-box__images">
-              <%= image_tag('/images/lp/character.jpg', style: 'max-width: 40%;height: auto;') %>
+              <%= image_tag('/images/lp/visitor-member.png', style: 'max-width: 40%;height: auto;') %>
             </div>
             <div class="plans-card__body">
               <span class="lp-price">無料</span>
               <div class="pb-2 pt-2">
-                <i class="fa fa-check mr-2"></i>東京自習会イベント
+                <i class="fa fa-check mr-2"></i>お好きなイベント<br>（初回のみ）
               </div>
             </div>
           </div>
@@ -61,32 +66,50 @@
         <div class="col-12 col-md-4">
           <div class="lp-card">
             <div class="lp-card-header">
-              <h4 class="lp-card-title">交流メンバー</h4>
-              <p>「交流」「スキルアップ勉強会」で、</p>
-              <p>知見を広げプラスαの力を身につける</p>
+              <h4 class="lp-card-title">コミュニティメンバー</h4>
+              <p>「学びの習慣化」で、</p>
+              <p class="mb-0">目標達成の力を身につける</p>
             </div>
             <div class="plans-comparison-box__images">
-              <%= image_tag('/images/lp/character.jpg', style: 'max-width: 40%;height: auto;') %>
+              <%= image_tag('/images/lp/community-member.png', style: 'max-width: 40%;height: auto;') %>
             </div>
             <div class="plans-card__body">
-              <span class="lp-price">¥980</span>
+              <span class="lp-price">¥500</span>
+              <span>/月(税別)</span>
+              <div class="pb-2 pt-2">
+                <i class="fa fa-check main-color mr-2"></i>自習会・交流イベント<br>
+                <i class="fa fa-check main-color mr-2"></i>オンラインコミュニティ
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="lp-card">
+            <div class="lp-card-header">
+              <h4 class="lp-card-title">ファシリテーター</h4>
+              <p>仲間と一緒に</p>
+              <p>目標を達成する</p>
+            </div>
+            <div class="plans-comparison-box__images">
+              <%= image_tag('/images/lp/facilitator-member.png', style: 'max-width: 40%;height: auto;') %>
+            </div>
+            <div class="plans-card__body">
+              <span class="lp-price">¥1000</span>
               <span>/月(税別)</span>
               <div class="text-center">
-                <i class="fa fa-check main-color mr-2"></i>東京自習会イベント<br>
-                <i class="fa fa-check main-color mr-2"></i>交流コミュニティ<br>
-                <i class="fa fa-check main-color mr-2"></i>交流イベント<br>
-                <i class="fa fa-check main-color mr-2"></i>スキルアップ勉強会
+                <i class="fa fa-check main-color mr-2"></i>自習会・交流イベント<br>
+                <i class="fa fa-check main-color mr-2"></i>オンラインコミュニティ<br>
+                <i class="fa fa-check main-color mr-2"></i>イベントの企画・開催
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-12 col-md-8 offset-md-2 pt-5 pb-4">
-        <p>交流メンバーへの登録には、事前に<span>新規登録/ログイン</span>が必要です</p>
-        <div class="d-flex justify-content-around">
-          <%= link_to 'ログイン', new_user_session_path, class: 'btn lp-login-btn', target: 'blank' %>
-          <%= link_to '新規登録', new_user_registration_path, class: 'btn lp-cv-btn', target: 'blank' %>
-        </div>
+      <div class="col-12 col-md-8 offset-md-2 pt-5 pb-4 text-center">
+        <p>コミュニティに参加をご希望の場合は下記のリンク先からお申込み下さい。</p>
+          <div class="d-flex justify-content-around">
+            <%= link_to 'コミュニティに参加する！', 'https://community.camp-fire.jp/projects/view/452788', class: 'btn lp-community-btn', target: 'blank' %>
+          </div>
       </div>
     </div>
   </div>
@@ -108,16 +131,24 @@
     </div>
     <div class="qa-card">
       <h4 class="qa-title">どのような人が参加し何をしているのですか？</h4>
-      <p class="qa-disc">年齢　：20代前半から30代後半<br>
-        男女比：男性4割、女性6割<br>
-        職業　：学生、会社員、自営業<br>
-        業種　：IT(SE)系、医療系、事務系など<br>
-        自習してるもの：資格の勉強、仕事、読書
+      <p class="qa-disc">
+        <span class="qa-caption">職業：</span>9割以上が会社員。（学生は1割程度）<br>
+        <span class="qa-caption">職種：</span>IT、営業、事務、技術、金融など。<br>
+        <span class="qa-caption">男女比：</span>男性4割、女性6割<br>
+        <span class="qa-caption">年齢層：</span>20代から60代（学生の方もいます。）<br>
+        <span class="qa-caption">勉強内容：</span>資格試験の勉強の他にもダイエットや読書、プログラミングなどにも取り組んでいます。<br>
+        <span class="qa-caption">資格試験：</span>社労士、中小企業診断士、技術士、税理士、司法試験、司法書士、行政書士の難関資格の他にTOEICやFPなど、色んな資格を目指す方がいます。
       </p>
     </div>
-    <div class="qa-card">
+    <div class="qa-card last">
       <h4 class="qa-title">途中参加、途中退室したいんですが可能ですか？</h4>
       <p class="qa-disc">休日は色々と用事を入れている方も多いと思います。なので途中参加も途中退室もOKです！ご自身のライフスタイルに合わせて参加して頂ければと思います。</p>
+    </div>
+    <div class="col-12 col-md-8 offset-md-2 pt-5 pb-4 text-center">
+      <p>コミュニティに参加をご希望の場合は下記のリンク先からお申込み下さい。</p>
+        <div class="d-flex justify-content-around">
+          <%= link_to 'コミュニティに参加する！', 'https://community.camp-fire.jp/projects/view/452788', class: 'btn lp-community-btn', target: 'blank' %>
+        </div>
     </div>
   </div>
 </section>

@@ -443,7 +443,7 @@ div.field_with_errors {
 }
 
 .lp-image {
-  background-image: url('/jisyuu-top.jpg');
+  background-image: url('/jisyuu-top.png');
   background-size: cover;
   height: 65vh;
   background-position: 60% 100%;
@@ -503,9 +503,25 @@ div.field_with_errors {
   }
 }
 
+.lp-community-btn {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  padding: 0 28px;
+  font-size: 20px;
+  height: 48px;
+  line-height: 48px;
+  background-color: #00B0F0;
+  border: solid 1px #0070C0;
+  color: white;
+  &:hover {
+    color:  white;
+    opacity: 0.9;
+  }
+}
+
 .lp-lead2 {
   min-height: calc(100vh - 61px);
   padding-top: 90px;
+  padding-bottom: 60px;
 }
 
 .lp-read2-title {
@@ -523,9 +539,8 @@ div.field_with_errors {
 }
 
 .lp-read2-desc {
-  text-align: left;
-  line-height: 2.2;
-  font-size: 15px;
+  font-size: 18px;
+  text-align: center;
 }
 
 .lp-plan {
@@ -550,6 +565,9 @@ div.field_with_errors {
       max-width: 40%;
       height: auto;
     }
+    .plans-card__body {
+      padding-top: 8px;
+    }  
   }
   .lp-price {
     font-weight: 500;
@@ -565,6 +583,9 @@ div.field_with_errors {
     border-radius: 1em;
     padding: 30px;
     margin-bottom: 50px;
+    &.last {
+      margin-bottom: 0;
+    }
     .qa-title {
       padding-bottom: 20px;
       font-size: 20px;
@@ -572,6 +593,9 @@ div.field_with_errors {
     }
     .qa-desc {
       font-size: 18px;
+    }
+    .qa-caption {
+      font-weight: 600;
     }
   }
 }
@@ -603,6 +627,13 @@ div.field_with_errors {
     text-align: left;
     padding-bottom: 30px;
     padding-top: 30px;
+  }
+  .lp-lead2 {
+    padding-bottom: 0;
+  }  
+  .lp-read2-desc {
+    font-size: 16px;
+    text-align: left;
   }
   .lp-image {
     min-height: 480px;

@@ -44,8 +44,8 @@ RSpec.describe "ランディングページ", type: :system do
 
     it "メンバーカードが正しく表示されること" do
       card_assert_helper(first_card, 'ビジターメンバー', "img[src$='/images/lp/visitor-member.png']", '無料', 1)
-      card_assert_helper(second_card, 'コミュニティメンバー', "img[src$='/images/lp/community-member.png']", '¥500', 2)
-      card_assert_helper(third_card, 'ファシリテーター', "img[src$='/images/lp/facilitator-member.png']", '¥1000', 3)
+      card_assert_helper(second_card, 'コミュニティメンバー', "img[src$='/images/lp/community-member.png']", '¥980', 2)
+      card_assert_helper(third_card, 'ファシリテーター', "img[src$='/images/lp/facilitator-member.png']", '¥1,980', 3)
     end
 
     it "コミュニティのリンクボタンが正しく表示されること" do

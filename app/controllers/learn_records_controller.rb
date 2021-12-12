@@ -19,10 +19,10 @@ class LearnRecordsController < ApplicationController
   def create
     @learn_record = current_user.learn_records.build(learn_record_params)
     if @learn_record.save
-      flash[:notice] = "勉強ノートの作成に成功しました。"
+      flash[:notice] = "ブログの作成に成功しました。"
       redirect_to learn_record_path(@learn_record)
     else
-      flash[:danger] = "勉強ノートの作成に失敗しました。"
+      flash[:danger] = "ブログの作成に失敗しました。"
       render :new
     end
   end
@@ -32,10 +32,10 @@ class LearnRecordsController < ApplicationController
 
   def update
     if @learn_record.update_attributes(learn_record_params)
-      flash[:notice] = "勉強ノートの更新に成功しました。"
+      flash[:notice] = "ブログの更新に成功しました。"
       redirect_to learn_record_path(@learn_record)
     else
-      flash[:danger] = "勉強ノートの更新に失敗しました。"
+      flash[:danger] = "ブログの更新に失敗しました。"
       render :edit
     end
   end
@@ -43,10 +43,10 @@ class LearnRecordsController < ApplicationController
   def destroy
     @learn_record.is_deleted = true
     if @learn_record.save
-      flash[:notice] = "勉強ノートの削除に成功しました。"
+      flash[:notice] = "ブログの削除に成功しました。"
       redirect_to learn_records_path
     else
-      flash[:danger] = "勉強ノートの削除に失敗しました。"
+      flash[:danger] = "ブログの削除に失敗しました。"
       render :index
     end
   end

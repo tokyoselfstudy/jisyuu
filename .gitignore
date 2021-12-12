@@ -31,3 +31,4 @@ yarn-debug.log*
 .yarn-integrity
 vendor/*
 *.swp
+bundle_install.sh

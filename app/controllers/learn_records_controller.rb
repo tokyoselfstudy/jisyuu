@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class LearnRecordsController < ApplicationController
+  include AdminConcern
+
   before_action :authenticate_user!, only: [:index, :new, :create, :edit, :update, :destroy, :menu]
-  before_action :correct_user?, only: [:edit, :update, :destroy, :menu]
+  before_action :check_correct_user, only: [:edit, :update, :destroy, :menu]
 
   def index
     @learn_records = LearnRecord.publish.order(created_at: :desc)
@@ -14,6 +16,7 @@ class LearnRecordsController < ApplicationController
 
   def show
     @learn_record = LearnRecord.find(params[:id])
+    @correct_user = correct_user?
   end
 
   def create
@@ -60,8 +63,12 @@ class LearnRecordsController < ApplicationController
       params.require(:learn_record).permit(:title, :content, :thumbnail, :study_category_id, :is_published, :is_deleted)
     end
 
+    def check_correct_user
+      redirect_to "/", alert: "ブログの変更・削除権限がありません。" unless correct_user?
+    end
+
     def correct_user?
       @learn_record = LearnRecord.find(params[:id])
-      view_context.is_same_user?(current_user.id, @learn_record.user_id)
+      view_context.is_same_user?(current_user.id, @learn_record.user_id) || is_admin_user?
     end
 end

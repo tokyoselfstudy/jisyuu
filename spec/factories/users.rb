@@ -33,7 +33,7 @@ FactoryBot.define do
   factory :admin_user, class: User do
     family_name { "コミュニティ" }
     first_name { "管理者" }
-    sequence(:email) { |n| "manager_tester#{n}@example.com" }
+    sequence(:email) { |n| "admin_tester#{n}@example.com" }
     password { "hogehogefoobar" }
     is_manager { true }
     is_admin { true }

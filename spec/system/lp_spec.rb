@@ -3,13 +3,6 @@
 require "rails_helper"
 
 RSpec.describe "ランディングページ", type: :system do
-  def card_assert_helper (card, member, img, price, benefits_number)
-    expect(card.find('div.lp-card-header')).to have_selector 'h4.lp-card-title', text: member
-    expect(card.find('div.plans-comparison-box__images')).to have_selector img
-    expect(card.find('div.plans-card__body')).to have_selector 'span.lp-price', text: price
-    expect(card.find('div.plans-card__body').all('svg.fa-check').size).to eq benefits_number
-  end
-
   def button_assert_helper (element)
     expect(page.find(element)).to have_link 'コミュニティに参加する！', href: 'https://community.camp-fire.jp/projects/view/452788'
   end
@@ -19,8 +12,14 @@ RSpec.describe "ランディングページ", type: :system do
   end
   context "lp-image" do
     it "lp-imageのテキストが正しく表示されること" do
-      expect(page.find('section.lp-image')).to have_selector 'h1', text: '良い習慣をつくろう'
+      expect(page.find('section.lp-image')).to have_selector 'h1', text: '勉強の習慣をつくろう'
       expect(page.find('section.lp-image')).to have_selector 'p', text: '「つづく」から「習慣」へ'
+    end
+  end
+
+  context "lp-lead" do
+    it "lp-leadのテキストが正しく表示されること" do
+      expect(page.find('section.lp-lead').all('p')[3].text).to include '『勉強の習慣』'
     end
   end
 
@@ -38,6 +37,13 @@ RSpec.describe "ランディングページ", type: :system do
   end
 
   context "lp-plan" do
+    def card_assert_helper (card, member, img, price, benefits_number)
+      expect(card.find('div.lp-card-header')).to have_selector 'h4.lp-card-title', text: member
+      expect(card.find('div.plans-comparison-box__images')).to have_selector img
+      expect(card.find('div.plans-card__body')).to have_selector 'span.lp-price', text: price
+      expect(card.find('div.plans-card__body').all('svg.fa-check').size).to eq benefits_number
+    end
+  
     let(:first_card) { page.all('section.lp-plan .lp-card')[0] }
     let(:second_card) { page.all('section.lp-plan .lp-card')[1] }
     let(:third_card) { page.all('section.lp-plan .lp-card')[2] }
@@ -53,7 +59,7 @@ RSpec.describe "ランディングページ", type: :system do
     end
   end
 
-  context 'lp-qa' do
+  context 'lp-qa' do    
     it "コミュニティのリンクボタンが正しく表示されること" do
       button_assert_helper('section.lp-qa')
     end

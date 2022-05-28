@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_21_020813) do
+ActiveRecord::Schema.define(version: 2022_05_21_114337) do
 
   create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -152,6 +152,8 @@ ActiveRecord::Schema.define(version: 2020_04_21_020813) do
     t.string "studying", comment: "勉強している事"
     t.text "introduction", comment: "自己紹介"
     t.date "birthdate", comment: "誕生日"
+    t.string "twitter", comment: "Twitterアカウント"
+    t.string "instagram", comment: "Instagramアカウント"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

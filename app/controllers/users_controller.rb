@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @upcoming_events = Event.upcoming_events(@user.id)
     @past_events = Event.past_events(@user.id)
+    myself_user?
   end
 
   def events
@@ -24,5 +25,14 @@ class UsersController < ApplicationController
                 .limit(40)
                 .page(params[:page])
                 .per(10)
+  end
+
+
+  private
+  def myself_user?
+    user = User.find(params[:id])
+    @myself_user = user_signed_in? ? 
+      view_context.is_same_user?(current_user.id, user.id) :
+      false
   end
 end

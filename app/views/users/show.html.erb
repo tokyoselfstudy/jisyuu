@@ -24,7 +24,9 @@
         </div>
       </div>
       <p style="word-wrap: break-word;"><%= @user.introduction.present? ? hbr(@user.introduction).html_safe : 'プロフィール文未設定' %></p>
-      <a class="sign-up-btn text-center" style="width: 100%;display: block" href="/users/edit">プロフィールを編集する</a>
+      <% if @myself_user %>
+        <a class="sign-up-btn text-center" style="width: 100%;display: block" href="/users/edit">プロフィールを編集する</a>
+      <% end %>
     </div>
   </div>
 </div>

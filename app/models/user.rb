@@ -15,6 +15,11 @@ class User < ApplicationRecord
   has_one_attached :avatar
   validate :avatar_presence, on: :update, unless: :encrypted_password_changed?
 
+  TWITTER_REGEXP = /\A\w{1,15}\z|\A\z/
+  INSTAGRAM_REGEXP = /\A(?!\.)[\w.]{1,30}(?<!\.)\z|\A\z/
+  validates :twitter, format: { with: TWITTER_REGEXP }, on: :update, unless: :encrypted_password_changed?
+  validates :instagram, format: { with: INSTAGRAM_REGEXP }, on: :update, unless: :encrypted_password_changed?
+
   has_many :events
   has_many :events_users
   has_many :learn_records

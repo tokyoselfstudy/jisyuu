@@ -41,57 +41,66 @@ RSpec.describe "learn_records", type: :system do
       end
     end
 
-    context "自分で作ったブログ" do
+    context "ログイン前" do
       before do
-        visit new_user_session_path
-        fill_in "メールアドレス", with: user.email
-        fill_in "パスワード", with: user.password
-        click_button "ログイン"
-
         visit learn_record_path(user_learn_record)
       end
-
-      it_behaves_like 'show edit and delete links and they work correctly'
-
-    end
-
-    context "他人が作ったブログ（一般ユーザー）" do
-      before do
-        visit new_user_session_path
-        fill_in "メールアドレス", with: other_user.email
-        fill_in "パスワード", with: other_user.password
-        click_button "ログイン"
-
-        visit learn_record_path(user_learn_record)
-      end
-
       it_behaves_like "don't show edit and delete links"
     end
 
-    context "他人が作ったブログ（マネージャー）" do
-      before do
-        visit new_user_session_path
-        fill_in "メールアドレス", with: manager_user.email
-        fill_in "パスワード", with: manager_user.password
-        click_button "ログイン"
-
-        visit learn_record_path(user_learn_record)
+    context "ログイン後" do
+      context "自分で作ったブログ" do
+        before do
+          visit new_user_session_path
+          fill_in "メールアドレス", with: user.email
+          fill_in "パスワード", with: user.password
+          click_button "ログイン"
+  
+          visit learn_record_path(user_learn_record)
+        end
+  
+        it_behaves_like 'show edit and delete links and they work correctly'
+  
       end
-
-      it_behaves_like "don't show edit and delete links"
-    end
-
-    context "他人が作ったブログ（管理ユーザー）" do
-      before do
-        visit new_user_session_path
-        fill_in "メールアドレス", with: admin_user.email
-        fill_in "パスワード", with: admin_user.password
-        click_button "ログイン"
-
-        visit learn_record_path(user_learn_record)
+  
+      context "他人が作ったブログ（一般ユーザー）" do
+        before do
+          visit new_user_session_path
+          fill_in "メールアドレス", with: other_user.email
+          fill_in "パスワード", with: other_user.password
+          click_button "ログイン"
+  
+          visit learn_record_path(user_learn_record)
+        end
+  
+        it_behaves_like "don't show edit and delete links"
       end
-
-      it_behaves_like 'show edit and delete links and they work correctly'
+  
+      context "他人が作ったブログ（マネージャー）" do
+        before do
+          visit new_user_session_path
+          fill_in "メールアドレス", with: manager_user.email
+          fill_in "パスワード", with: manager_user.password
+          click_button "ログイン"
+  
+          visit learn_record_path(user_learn_record)
+        end
+  
+        it_behaves_like "don't show edit and delete links"
+      end
+  
+      context "他人が作ったブログ（管理ユーザー）" do
+        before do
+          visit new_user_session_path
+          fill_in "メールアドレス", with: admin_user.email
+          fill_in "パスワード", with: admin_user.password
+          click_button "ログイン"
+  
+          visit learn_record_path(user_learn_record)
+        end
+  
+        it_behaves_like 'show edit and delete links and they work correctly'
+      end
     end
   end
 

@@ -5,10 +5,28 @@
         <%= image_tag(@user.avatar.variant(resize: "100x100"), class: 'rounded') if @user.avatar.attached? %>
         <a class="text-decoration-none p-2 border border-danger h-25 rounded-pill" href="/menu" style="color: #DC564F;">メニュー</a>
       </div>
-      <p class="mt-4 mb-0 font-weight-bold">氏名: <%= @user.display_priority_nickname %></p>
-      <p class="font-weight-bold" style="color:gray;">学習している事: <%= @user.studying %></p>
+      <div class="d-flex justify-content-between mt-4">
+        <div>
+          <p class="mb-0 font-weight-bold">氏名: <%= @user.display_priority_nickname %></p>
+          <p class="font-weight-bold" style="color:gray;">学習している事: <%= @user.studying %></p>
+        </div>
+        <div class="sns-area" style="max-height: 100%;">
+          <% unless @user.twitter.blank? %>
+            <%= link_to "https://twitter.com/#{@user.twitter}", target: :_blank, rel: "noopener noreferrer", class: "sns-link" do %>
+              <i class="fab fa-twitter fa-2x"></i>
+            <% end %>
+          <% end %>
+          <% unless @user.instagram.blank? %>
+            <%= link_to "https://instagram.com/#{@user.instagram}", target: :_blank, rel: "noopener noreferrer", class: "sns-link" do %>
+              <i class="fab fa-instagram fa-2x"></i>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
       <p style="word-wrap: break-word;"><%= @user.introduction.present? ? hbr(@user.introduction).html_safe : 'プロフィール文未設定' %></p>
-      <a class="sign-up-btn text-center" style="width: 100%;display: block" href="/users/edit">プロフィールを編集する</a>
+      <% if @myself_user %>
+        <a class="sign-up-btn text-center" style="width: 100%;display: block" href="/users/edit">プロフィールを編集する</a>
+      <% end %>
     </div>
   </div>
 </div>

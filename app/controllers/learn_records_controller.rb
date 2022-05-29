@@ -68,6 +68,8 @@ class LearnRecordsController < ApplicationController
     end
 
     def correct_user?
+      return false unless user_signed_in?
+
       @learn_record = LearnRecord.find(params[:id])
       view_context.is_same_user?(current_user.id, @learn_record.user_id) || is_admin_user?
     end

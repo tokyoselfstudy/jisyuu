@@ -646,3 +646,9 @@ div.field_with_errors {
     }
   }
 }
+
+.sns-link {
+  &:hover {
+    text-decoration: none;
+  }  
+}

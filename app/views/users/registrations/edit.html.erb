@@ -123,6 +123,24 @@
         <%= f.text_area :introduction, autofocus: true, class: 'form-control', rows: 8 %>
       </div>
 
+      <div class="field mb-4">
+        <%= f.label :twitter do %>
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+          Twitterアカウント
+        <% end %><br />
+        https://twitter.com/
+        <%= f.text_field :twitter, autofocus: true, class: 'form-control', style: 'width: 35%; display: inline-block;' %>
+      </div>
+
+      <div class="field mb-4">
+        <%= f.label :instagram do %>
+          <i class="fab fa-instagram" aria-hidden="true"></i>
+          Instagramアカウント
+        <% end %><br />
+        https://instagram.com/
+        <%= f.text_field :instagram, autofocus: true, class: 'form-control', style: 'width: 35%; display: inline-block;'  %>
+      </div>
+
       <div class="actions">
         <%= f.submit "更新する", class: 'sign-up-btn btn-block mt-3' %>
       </div>
